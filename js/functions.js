@@ -117,7 +117,6 @@ function calculateTip(percentage, totalBill) {
 function applyDiscount(price, discount) {
     var discountAmount = discount * price
     // console.log(discountAmount)
-
     return price - discountAmount
 }
 
