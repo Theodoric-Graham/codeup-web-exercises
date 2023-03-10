@@ -29,7 +29,7 @@
 // 'Google pays $400, Amazon $380, and Facebook $350. How much will you receive in payment for this week?
 // var google = +prompt('How many hours have you worked at Google?') * 400;
 // var amazon = +prompt('How many hours have you worked at Amazon?') * 380;
-// var facebook = +prompt('How many hours have you worked at Facebook?') * 10;
+// var facebook = +prompt('How many hours have you worked at Facebook?') * 350;
 // var totalPaid = facebook + amazon + google;
 // alert(`You have made $${totalPaid} this week 🤑`)
 // alert('You have made $' +totalPaid+ ' this week 🤑')
