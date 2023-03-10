@@ -37,16 +37,25 @@
 
 // A student can be enrolled in a class only if the class is not full and the
 // class schedule does not conflict with her current schedule.
-var students = prompt('How many students are in this class? 25 students per classroom.')
-var roomAvailable = students < 25;
-console.log(roomAvailable)
-var classDay = prompt('What day is the class?')
-var availableDays = ['monday', 'tuesday', 'thursday', 'friday'];
-var checkSchedule = availableDays.includes(classDay.toLowerCase())
-console.log(checkSchedule)
-var enrolled = checkSchedule && roomAvailable
-console.log(enrolled)
-alert('📚Enrollment status: ' +enrolled)
+// var students = prompt('How many students are in this class? 25 students per classroom.')
+// var roomAvailable = students < 25;
+// console.log(roomAvailable)
+// var classDay = prompt('What day is the class?')
+// var availableDays = ['monday', 'tuesday', 'thursday', 'friday'];
+// var checkSchedule = availableDays.includes(classDay.toLowerCase())
+// console.log(checkSchedule)
+// var enrolled = checkSchedule && roomAvailable
+// console.log(enrolled)
+// alert('📚Enrollment status: ' +enrolled)
 
-
+// A product offer can be applied only if a person buys more than 2 items, and the offer has not
+// expired. Premium members do not need to buy a specific amount of products.
+var premium = confirm('Are you a premium member?')
+var items = prompt('How many items are you buying')
+var itemsForOffer = items > 2
+var expirationDate = 15
+var todayDate = prompt('What is today\'s date. Numbers only')
+var isNotExpired = todayDate < expirationDate
+var offerApplied = itemsForOffer && isNotExpired || premium && isNotExpired
+alert('Offer Status: ' +offerApplied)
 
