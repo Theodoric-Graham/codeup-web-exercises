@@ -53,20 +53,18 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
-// function analyzeColor(color) {
-//     var colorLower = color.toLowerCase()
-//     switch(colorLower) {
-//         case 'red':
-//             return color + ' is the color of roses'
-//             break;
-//         case 'blue':
-//             return color + ' is the color of the sky'
-//             break;
-//         default:
-//         return 'I don\'t know anything about ' + color
-//     }
-// }
-//
+function analyzeColor(color) {
+    var colorLower = color.toLowerCase()
+    switch(colorLower) {
+        case 'red':
+            return color + ' is the color of roses'
+        case 'blue':
+            return color + ' is the color of the sky'
+        default:
+        return 'I don\'t know anything about ' + color
+    }
+}
+
 // console.log(analyzeColor(randomColor))
 
 
@@ -76,6 +74,11 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+
+// var colorInput = prompt('Please enter a color')
+// alert(analyzeColor(colorInput))
+
+
 
 /* ########################################################################## */
 
@@ -99,6 +102,29 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * return value.
  */
 
+function calculateTotal(num, total) {
+    switch(num) {
+        case 0:
+            return total
+        case 1:
+            return total -= total * .1
+        case 2:
+            return total -= total * .25
+        case 3:
+            return total -= total * .35
+        case 4:
+            return total -= total * .5
+        case 5:
+            return total -= total * 1
+    }
+
+}
+//
+// console.log(calculateTotal(1, 100));
+// console.log(calculateTotal(0, 100));
+// console.log(calculateTotal(4, 100));
+// console.log(calculateTotal(5, 100));
+
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
@@ -109,6 +135,12 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  */
 // Generate a random number between 0 and 6
 // var luckyNumber = Math.floor(Math.random() * 6);
+// // Ask user for bill input
+// var billTotal = prompt('What is your total bill')
+// // running the function on our variables
+// var discountTotal = calculateTotal(luckyNumber, billTotal)
+// //Alert the user of the calculation
+// alert('Your lucky number was: ' +luckyNumber+ '. Your total before the discount is: $' +billTotal+ '. And your total after the discount is: $' +discountTotal)
 
 /**
  * TODO:
@@ -128,3 +160,39 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+
+//Checks if number is even or odd and alerts user
+var isEven = function(num) {
+    if(num % 2 === 0) {
+        alert('The number ' +num+ ' is even!')
+    } else {
+        alert('The number ' +num+ ' is odd!')
+    }
+}
+//Adds 100 to number and alerts user
+var plusHundred = function(num) {
+    var added = num + 100
+    alert('Adding 100 to ' +num+ ' is ' +added)
+}
+//Checls if number is positive or negative and alerts user
+var isPositive = function(num) {
+    if (num > 0) {
+        alert('The number ' +num+ ' is positive')
+    } else {
+        alert('The number ' +num+ ' is negative')
+    }
+}
+
+//Ask user if they want to enter a number and save boolean based on response
+var confirmNumber = confirm('Would you like to enter a number?')
+// console.log(confirmNumber)
+//If they click ok then trigger a prompt
+if (confirmNumber) {
+    var numberInput = +prompt('Please enter a number')
+    // use 3 separate alerts to tell the user
+    isEven(numberInput)
+    plusHundred(numberInput)
+    isPositive(numberInput)
+} else {
+    alert('Please refresh the page to enter a number')
+}
