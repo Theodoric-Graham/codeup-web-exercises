@@ -41,7 +41,6 @@ function addOne(input) {
 var toNumber = +input
     return toNumber + 1
 }
-
 // Define a function named isEven that takes in a single input. If the input is an even number or a string containing an even number, return true. Any other input should return false for the output.
 function isEven(input) {
     if(+input % 2 === 0) {
