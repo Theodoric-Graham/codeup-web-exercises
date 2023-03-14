@@ -114,16 +114,16 @@ function calculateTip(percentage, totalBill) {
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
-// function applyDiscount(price, discount) {
-//     var discountAmount = discount * price
-//     // console.log(discountAmount)
-//     return price - discountAmount
-// }
-//
-// var originalPrice = 100
-// var discountPercent = .2;
-// console.log(applyDiscount(originalPrice, discountPercent))
-// console.log(applyDiscount(45.99, 0.12))
+function applyDiscount(price, discount) {
+    var discountAmount = discount * price
+    // console.log(discountAmount)
+    return price - discountAmount
+}
+
+var originalPrice = 100
+var discountPercent = .2;
+console.log(applyDiscount(originalPrice, discountPercent))
+console.log(applyDiscount(45.99, 0.12))
 
 // function helloWorld() {
 //     console.log('Hello World')
@@ -132,6 +132,6 @@ function calculateTip(percentage, totalBill) {
 // helloWorld()
 
 //IIFE
-(function helloWorld() {
-    console.log('Hello World')
-}())
+// (function helloWorld() {
+//     console.log('Hello World')
+// }())
