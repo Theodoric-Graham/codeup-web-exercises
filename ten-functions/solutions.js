@@ -23,7 +23,7 @@
 
 // Define a function named isTrue that takes in any input and returns true if the input provided is exactly equal to true in value and boolean in data type.
 function isTrue(input) {
-   return input === true
+    return input === true
 }
 
 //Define a function named isFalse that takes in a value and returns true if and only if the argument provided false.
@@ -38,16 +38,17 @@ function not(input) {
 
 // Define a function named addOne that takes in a single input. If the input is a number or a numeric string, return the value plus one.
 function addOne(input) {
-var toNumber = +input
+    var toNumber = +input
     return toNumber + 1
 }
+
 // Define a function named isEven that takes in a single input. If the input is an even number or a string containing an even number, return true. Any other input should return false for the output.
 function isEven(input) {
-    if(+input % 2 === 0) {
-        return true
-    } else {
-        return false
-    }
+ if(input % 2 === 0) {
+     return true
+ } else {
+     return false
+ }
 
 }
 
