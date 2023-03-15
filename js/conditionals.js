@@ -53,17 +53,17 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
-function analyzeColor(color) {
-    var colorLower = color.toLowerCase()
-    switch(colorLower) {
-        case 'red':
-            return color + ' is the color of roses'
-        case 'blue':
-            return color + ' is the color of the sky'
-        default:
-        return 'I don\'t know anything about ' + color
-    }
-}
+// function analyzeColor(color) {
+//     var colorLower = color.toLowerCase()
+//     switch(colorLower) {
+//         case 'red':
+//             return color + ' is the color of roses'
+//         case 'blue':
+//             return color + ' is the color of the sky'
+//         default:
+//         return 'I don\'t know anything about ' + color
+//     }
+// }
 
 // console.log(analyzeColor(randomColor))
 
@@ -77,7 +77,6 @@ function analyzeColor(color) {
 
 // var colorInput = prompt('Please enter a color')
 // alert(analyzeColor(colorInput))
-
 
 
 /* ########################################################################## */
@@ -102,23 +101,23 @@ function analyzeColor(color) {
  * return value.
  */
 
-function calculateTotal(num, total) {
-    switch(num) {
-        case 0:
-            return total
-        case 1:
-            return total -= total * .1
-        case 2:
-            return total -= total * .25
-        case 3:
-            return total -= total * .35
-        case 4:
-            return total -= total * .5
-        case 5:
-            return total -= total * 1
-    }
-
-}
+// function calculateTotal(num, total) {
+//     switch(num) {
+//         case 0:
+//             return total
+//         case 1:
+//             return total -= total * .1
+//         case 2:
+//             return total -= total * .25
+//         case 3:
+//             return total -= total * .35
+//         case 4:
+//             return total -= total * .5
+//         default:
+//             alert('you get everything for free!')
+//             return total -= total
+//     }
+// }
 //
 // console.log(calculateTotal(1, 100));
 // console.log(calculateTotal(0, 100));
@@ -162,24 +161,24 @@ function calculateTotal(num, total) {
  */
 
 //Checks if number is even or odd and alerts user
-var isEven = function(num) {
-    if(num % 2 === 0) {
-        alert('The number ' +num+ ' is even!')
+var isEven = function (num) {
+    if (num % 2 === 0) {
+        alert('The number ' + num + ' is even!')
     } else {
-        alert('The number ' +num+ ' is odd!')
+        alert('The number ' + num + ' is odd!')
     }
 }
 //Adds 100 to number and alerts user
-var plusHundred = function(num) {
+var plusHundred = function (num) {
     var added = num + 100
-    alert('Adding 100 to ' +num+ ' is ' +added)
+    alert('Adding 100 to ' + num + ' is ' + added)
 }
-//Checls if number is positive or negative and alerts user
-var isPositive = function(num) {
+//Checks if number is positive or negative and alerts user
+var isPositive = function (num) {
     if (num > 0) {
-        alert('The number ' +num+ ' is positive')
+        alert('The number ' + num + ' is positive')
     } else {
-        alert('The number ' +num+ ' is negative')
+        alert('The number ' + num + ' is negative')
     }
 }
 
@@ -187,12 +186,38 @@ var isPositive = function(num) {
 var confirmNumber = confirm('Would you like to enter a number?')
 // console.log(confirmNumber)
 //If they click ok then trigger a prompt
-if (confirmNumber) {
-    var numberInput = +prompt('Please enter a number')
-    // use 3 separate alerts to tell the user
-    isEven(numberInput)
-    plusHundred(numberInput)
-    isPositive(numberInput)
-} else {
-    alert('Please refresh the page to enter a number')
+// if (confirmNumber) {
+//     var numberInput = +prompt('Please enter a number')
+//     // use 3 separate alerts to tell the user
+//     isEven(numberInput)
+//     plusHundred(numberInput)
+//     isPositive(numberInput)
+// } else {
+//     alert('Please refresh the page to enter a number')
+// }
+
+// USING SWITCH CASE
+switch (confirmNumber) {
+    case true:
+        var numberInput = +prompt('Please enter a number')
+        isEven(numberInput)
+        plusHundred(numberInput)
+        isPositive(numberInput)
+        break;
+    default:
+        alert('Please refresh the page to enter a number')
 }
+
+// var pass = "theSecretPassword";
+//
+// var userGuess = prompt("guess the pass");
+//
+// // if the user guesses correctly, alert "you are a winner"
+// userGuess == pass ? alert('you are a winner') : alert('try again next time')
+// // if the user guesses incorrectly, alert "try again next time"
+//
+// if (userGuess == pass) {
+//     alert('you are a winner')
+// } else {
+//     alert('try again next time')
+// }
