@@ -122,8 +122,8 @@ function applyDiscount(price, discount) {
 
 var originalPrice = 100
 var discountPercent = .2;
-console.log(applyDiscount(originalPrice, discountPercent))
-console.log(applyDiscount(45.99, 0.12))
+// console.log(applyDiscount(originalPrice, discountPercent))
+// console.log(applyDiscount(45.99, 0.12))
 
 // function helloWorld() {
 //     console.log('Hello World')
@@ -135,3 +135,26 @@ console.log(applyDiscount(45.99, 0.12))
 // (function helloWorld() {
 //     console.log('Hello World')
 // }())
+
+//create a for loop that uses console.log to create the output below
+// 1
+// 22
+// 333
+// 4444
+// 55555
+// 666666
+// 7777777
+// 88888888
+// 999999999
+
+// for ( var i=1; i<10 ; i++) {
+//     console.log(i)
+// }
+
+// for (let line = "*"; line.length < 8; line += "*")
+//     console.log(line);
+
+// for (let i = 1; i < 10; i ++) {
+//     var stringify = i.toString()
+//     console.log(stringify.repeat(i));
+// }
