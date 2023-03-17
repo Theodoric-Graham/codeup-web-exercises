@@ -79,11 +79,11 @@ var random = Math.floor((Math.random() * 3) + 1);
 function calculateTip(percentage, totalBill) {
     return percentage * totalBill
 }
+
 //
 // console.log(calculateTip(0.20, 20))
 // console.log(calculateTip(0.25, 25.50))
 // console.log(calculateTip(0.15, 33.42))
-
 
 
 /**
@@ -158,3 +158,22 @@ var discountPercent = .2;
 //     var stringify = i.toString()
 //     console.log(stringify.repeat(i));
 // }
+function getSum(a, b) {
+    let sum = 0
+    if (a < b) {
+        for (let i = a; i <= b; i++) {
+            sum += i
+        }
+    } else if (a > b) {
+        for (let i = b; i <= a; i++) {
+
+            sum += i
+            console.log(sum)
+        }
+    } else {
+        return a
+    }
+    console.log(sum);
+}
+
+getSum(5, 0)
