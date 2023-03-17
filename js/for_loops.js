@@ -12,7 +12,6 @@
 
 //gets random number between min and max, max is exclusive and min is inclusive
 function getRandomArbitrary(min, max) {
-    // console.log(Math.floor(Math.random() * (max - min) + min))
     return Math.floor(Math.random() * (max - min) + min);
 }
 
