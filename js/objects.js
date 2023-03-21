@@ -19,8 +19,8 @@
             return `Hello from ${this.firstName} ${this.lastName}`
         }
     }
-    console.log(person.firstName)
-    console.log(person.lastName)
+    // console.log(person.firstName)
+    // console.log(person.lastName)
     /**
      * TODO:
      * Add a sayHello method to the person object that returns a greeting using
@@ -31,7 +31,7 @@
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
 
-    console.log(person.sayHello())
+    // console.log(person.sayHello())
 
 
     /** TODO:
@@ -58,9 +58,9 @@
     shoppers.forEach(shopper => {
         if (shopper.amount > 200) {
             var discountTotal = shopper.amount - shopper.amount * .12
-            console.log(`${shopper.name} spent ${shopper.amount} and pays ${discountTotal.toFixed(2)} after discount`)
+            // console.log(`${shopper.name} spent ${shopper.amount} and pays ${discountTotal.toFixed(2)} after discount`)
         } else {
-            console.log(`${shopper.name} spent ${shopper.amount} and gets no discount`)
+            // console.log(`${shopper.name} spent ${shopper.amount} and gets no discount`)
         }
 
     })
@@ -78,66 +78,66 @@
      * > console.log(books[0].author.lastName) // "Adams"
      */
 
-        // var books = [
-        //     {
-        //         title: "Charlotte's Web",
-        //         author: {
-        //             firstName: 'Elwyn',
-        //             lastName: 'White'
-        //         }
-        //     },
-        //     {
-        //         title: 'Babe',
-        //         author: {
-        //             firstName: 'Dick',
-        //             lastName: 'King-Smith'
-        //         }
-        //     },
-        //     {
-        //         title: 'To Kill A Mockingbird',
-        //         author: {
-        //             firstName: 'Harper',
-        //             lastName: 'Lee'
-        //         }
-        //     },
-        //     {
-        //         title: '1984',
-        //         author: {
-        //             firstName: 'George',
-        //             lastName: 'Orwell'
-        //         }
-        //     },
-        //     {
-        //         title: 'The Lightning Thief',
-        //         author: {
-        //             firstName: 'Rick',
-        //             lastName: 'Riordan'
-        //         }
-        //     }
-        //     ]
-
-    var books = [
+        var books = [
             {
                 title: "Charlotte's Web",
-                author: 'Elwyn White'
+                author: {
+                    firstName: 'Elwyn',
+                    lastName: 'White'
+                }
             },
             {
                 title: 'Babe',
-                author: 'Dick Smith'
+                author: {
+                    firstName: 'Dick',
+                    lastName: 'King-Smith'
+                }
             },
             {
                 title: 'To Kill A Mockingbird',
-                author: 'Harper Lee'
+                author: {
+                    firstName: 'Harper',
+                    lastName: 'Lee'
+                }
             },
             {
                 title: '1984',
-                author: 'George Orwell'
+                author: {
+                    firstName: 'George',
+                    lastName: 'Orwell'
+                }
             },
             {
                 title: 'The Lightning Thief',
-                author: 'Rick Riordan'
+                author: {
+                    firstName: 'Rick',
+                    lastName: 'Riordan'
+                }
             }
-        ]
+            ]
+
+    // var books = [
+    //         {
+    //             title: "Charlotte's Web",
+    //             author: 'Elwyn White'
+    //         },
+    //         {
+    //             title: 'Babe',
+    //             author: 'Dick Smith'
+    //         },
+    //         {
+    //             title: 'To Kill A Mockingbird',
+    //             author: 'Harper Lee'
+    //         },
+    //         {
+    //             title: '1984',
+    //             author: 'George Orwell'
+    //         },
+    //         {
+    //             title: 'The Lightning Thief',
+    //             author: 'Rick Riordan'
+    //         }
+    //     ]
 
     // console.log(books[0].title)
     // console.log(books[0].author.firstName)
@@ -168,6 +168,19 @@
      *      ...
      */
 
+    //the book number, the index of the book
+    //the book title
+    // author full name first + last
+
+    books.forEach(function (book, i) {
+        console.log('Book # ' + (i +1))
+        console.log('Title: ' + book.title)
+        var firstName = book.author.firstName
+        var lastName = book.author.lastName
+        console.log('Author: ' + firstName + ' '  +lastName)
+        console.log('---')
+    })
+
     //the book number, title, and full name
     // books.forEach((book, i) => {
     //     console.log(`Book # ${i + 1}`)
@@ -187,35 +200,35 @@
      *   `showBookInfo` function.
      */
 
-    var createBook = (title, author) => {
-        var firstName = author.split(' ')[0];
-        var lastName = author.split(' ')[1];
+    // var createBook = (title, author) => {
+    //     var firstName = author.split(' ')[0];
+    //     var lastName = author.split(' ')[1];
         // console.log(firstName, lastName)
-        return {
-            title: title,
-            author: {
-                firstName: firstName,
-                lastName: lastName
-            }
-        }
-    }
-
-    books.forEach(book => {
-        console.log(createBook(book.title, book.author));
-    })
-
-    var showBookInfo = (obj, i) => {
-        // console.log('Book #' + (i + 1))
-        console.log(`Book # ${i + 1}`)
-        console.log(`Title: ${obj.title}`)
-        console.log(`Author: ${obj.author} `)
-        console.log('---')
-
-    }
-
-    books.forEach((book, i) => {
-        showBookInfo(book, i)
-    })
+    //     return {
+    //         title: title,
+    //         author: {
+    //             firstName: firstName,
+    //             lastName: lastName
+    //         }
+    //     }
+    // }
+    //
+    // books.forEach(book => {
+    //     console.log(createBook(book.title, book.author));
+    // })
+    //
+    // var showBookInfo = (obj, i) => {
+    //     // console.log('Book #' + (i + 1))
+    //     console.log(`Book # ${i + 1}`)
+    //     console.log(`Title: ${obj.title}`)
+    //     console.log(`Author: ${obj.author} `)
+    //     console.log('---')
+    //
+    // }
+    //
+    // books.forEach((book, i) => {
+    //     showBookInfo(book, i)
+    // })
 
 
 
