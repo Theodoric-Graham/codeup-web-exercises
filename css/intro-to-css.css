@@ -1,44 +1,40 @@
 /*CSS Practice*/
 
-/* h1 should be green*/
-/* all h2s should be red*/
-/* all text inside of buttons should be 24px in size*/
-/* at least 1 paragraph should have a dotted blue border*/
-/* the second list item should have a background color of yellow*/
-/* all list items should have a font size of 30px;*/
-/* the form should have a black background and change all the text inside of the form to white to make it legible*/
-/* round the edges to all buttons and give them a solid red border*/
 
+/* h1 should be green*/
 h1 {
     color: green;
 }
 
+/* all h4s should be red*/
 h4 {
     color: red
 }
 
-button  {
-    font-size: 24px;
-
-}
-
+/* all text inside of buttons should be 24px in size*/
+/* round the edges to all buttons and give them a solid red border*/
 input[type='submit'], button {
     border-radius: 10px;
     border: solid red;
+    font-size: 24px;
 }
 
+/* at least 1 paragraph should have a dotted blue border*/
 p {
     border: dotted blue;
 }
 
+/* the second list item should have a background color of yellow*/
 .special-list {
     background: yellow;
 }
 
+/* all list items should have a font size of 30px;*/
 li {
     font-size: 30px;
 }
 
+/* the form should have a black background and change all the text inside of the form to white to make it legible*/
 form {
     background: black;
     color: white;
