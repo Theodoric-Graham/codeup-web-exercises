@@ -54,6 +54,7 @@ a:visited {
 }
 
 a:hover {
+    color: green;
     font-size: 18px;
 }
 
