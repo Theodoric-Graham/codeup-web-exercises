@@ -1,22 +1,58 @@
-
+/*Center the main heading*/
+/*Add a style to change the background color of the page.*/
+/*Add a style to change the font for the entire page. Use google fonts if you would like.*/
 body {
     background: #fff4dc;
     margin-left: auto;
     margin-right: auto;
     width: 400px;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 
-table{
+table {
     margin-left: auto;
     margin-right: auto;
 }
 
+/*Add a style to change the list-style to something other than the default bullet.*/
 ul, ol {
     display: inline-block;
+    list-style: square;
 }
 
-.fancy-header {
+/*Add a style to change the color of the headers on your page and make them underlined.*/
+h1, h2 {
+    color: green;
+    text-decoration: underline;
+}
+
+/*Add a style to change the table, table cells td and rows tr padding and font sizes.*/
+table, td, tr {
+    color: green;
+    font-size: 20px;
+    padding: 20px;
+}
+
+/*Add a style to alter the anchor tags and its different states. (e.g. link, visited, hover and active).*/
+a:link {
     color: purple;
+}
+
+a:visited {
+    color: aqua;
+}
+
+a:hover {
+    font-size: 18px;
+}
+
+a:active {
+    color: black;
+}
+
+/*Add a style to add a background image to your background. Search how to manipulate the position, sizing of this background image.*/
+img {
+    width: 200px;
 }
