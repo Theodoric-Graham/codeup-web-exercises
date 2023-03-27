@@ -1,13 +1,21 @@
 /*Center the main heading*/
 /*Add a style to change the background color of the page.*/
 /*Add a style to change the font for the entire page. Use google fonts if you would like.*/
+html {
+    background: #d3ffbf
+}
+
 body {
     background: #fff4dc;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
+    width: 500px;
     text-align: center;
     font-family: 'Roboto', sans-serif;
+    border: black solid;
+    border-radius: 30px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.099);
+
 }
 
 
@@ -35,13 +43,14 @@ table, td, tr {
     padding: 20px;
 }
 
+
 /*Add a style to alter the anchor tags and its different states. (e.g. link, visited, hover and active).*/
 a:link {
-    color: purple;
+    color: black;
 }
 
 a:visited {
-    color: aqua;
+    color: blue;
 }
 
 a:hover {
@@ -49,10 +58,65 @@ a:hover {
 }
 
 a:active {
-    color: black;
+    color: purple;
 }
 
 /*Add a style to add a background image to your background. Search how to manipulate the position, sizing of this background image.*/
+/*img {*/
+/*    width: 200px;*/
+/*}*/
+
+table {
+    border-collapse: collapse;
+    border-radius: 90px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.099);
+
+}
+
+table, th, td {
+    border: 1px solid black;
+    background-color: white;
+}
+
+li {
+    font-size: 18px;
+}
+
+p {
+    font-size: 20px;
+}
+
+.image-container {
+    display: grid;
+    grid-template-columns: 250px 250px;
+    row-gap: 5px;
+    width: 100%;
+    /*overflow: hidden;*/
+
+}
+
+.grid-image {
+    overflow: hidden;
+    justify-self: center;
+    align-self: center;
+}
+
+.grid-image-tech {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.grid-image-engineer {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+img:hover {
+    transform: scale(1.1)
+}
+
 img {
-    width: 200px;
+    width: 100%;
+    transition: all 0.4s;
+    border-radius: 20px;
 }
