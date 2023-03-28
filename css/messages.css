@@ -10,7 +10,7 @@ body, html {
     --bg-info: rgba(0, 0, 255, 0.5);
     --text-info: rgba(0, 0, 255, 0.85);
     --bg-success: rgba(0, 255, 0, 0.5);
-    --text-success: #54ff55;
+    --text-success: #099719;
     --bg-warning: rgba(255, 255, 0, 0.5);
     --text-warning: #ff9b2f;
     --bg-error: rgba(255, 0, 0, 0.5);
@@ -21,10 +21,10 @@ body, html {
 
     border: 1px solid lightgray;
     padding: 6px 6px 6px 6px;
-    margin: 8px 0px 8px 0px;
+    margin: 0px auto 8px auto;
+    /*margin: 8px 0px 8px 0px;*/
     border-radius: 5px;
     width: 80%;
-
 }
 
 .message-info {
@@ -36,7 +36,7 @@ body, html {
 
 .message-success {
     /*background: rgba(0, 255, 0, 0.5);*/
-    /*color: #54ff55*/
+    /*color: #099719;*/
     background: var(--bg-success);
     color: var(--text-success);
 }
