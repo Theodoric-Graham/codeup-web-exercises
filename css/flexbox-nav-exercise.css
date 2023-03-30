@@ -38,7 +38,7 @@ ul {
     width: 20%;
     display: flex;
     list-style: none;
-    font-size: .5em;
+    font-size: .4em;
     margin-left: 1em;
 }
 
@@ -60,7 +60,7 @@ li {
     width: 20%;
     display: flex;
     justify-content: flex-end;
-    font-size: .5em;
+    font-size: .4em;
     gap: 1em;
     align-items: center;
     margin-right: 1em;
