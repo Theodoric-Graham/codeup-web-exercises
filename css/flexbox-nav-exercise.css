@@ -50,8 +50,8 @@ li {
 .logo {
     margin: auto;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.5em;
-    /*It asked for font-size 3em  but I like 1.5em more :D */
+    font-size: 1em;
+    /*It asked for font-size 3em  but I like 1em more :D */
     /*font-size: 3em;*/
     padding: .2em 0;
 }
