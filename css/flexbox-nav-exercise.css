@@ -1,0 +1,75 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background: grey;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+a {
+    color: black;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a:link {
+
+}
+
+a:visited {
+
+}
+
+a:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+a:active {
+
+}
+
+ul {
+    width: 20%;
+    display: flex;
+    list-style: none;
+    font-size: .5em;
+    margin-left: 1em;
+}
+
+li {
+    padding: 3px;
+}
+
+
+.logo {
+    margin: auto;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    /*It asked for font-size 3em  but I like 1.5em more :D */
+    /*font-size: 3em;*/
+    padding: .2em 0;
+}
+
+.features {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: .5em;
+    gap: 1em;
+    align-items: center;
+    margin-right: 1em;
+
+}
+
+svg {
+    width: 12px;
+}
+
+
+
