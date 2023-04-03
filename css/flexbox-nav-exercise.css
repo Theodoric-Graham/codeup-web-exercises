@@ -4,8 +4,17 @@
     box-sizing: border-box;
 }
 
+.nature {
+    background-image: linear-gradient(
+            rgba(34, 34, 34, 0.3),
+            rgba(34, 34, 34, 0.3)
+    ),
+    url(/images/nature.jpg);
+    background-size: cover;
+}
+
 nav {
-    background: grey;
+    background: white;
     width: 100%;
     display: flex;
     align-items: center;
@@ -38,7 +47,7 @@ ul {
     width: 20%;
     display: flex;
     list-style: none;
-    font-size: .4em;
+    font-size: .6em;
     margin-left: 1em;
 }
 
@@ -60,7 +69,7 @@ li {
     width: 20%;
     display: flex;
     justify-content: flex-end;
-    font-size: .4em;
+    font-size: .6em;
     gap: 1em;
     align-items: center;
     margin-right: 1em;
@@ -69,6 +78,65 @@ li {
 
 svg {
     width: 12px;
+}
+
+section {
+    text-align: center;
+}
+
+.circle1 {
+    position: absolute;
+    top: 300px;
+    height: 300px;
+    width: 300px;
+    background-color: rgba(71,151,55,0.45);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.circle2 {
+    position: absolute;
+    top: 300px;
+    right: 720px;
+    height: 300px;
+    width: 300px;
+    background-color: rgba(255,0,0,0.43);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.circle3 {
+    position: absolute;
+    top: 125px;
+    right: 570px;
+    height: 300px;
+    width: 300px;
+    background-color: rgba(254,255,249,0.43);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.testimonials {
+    width: 20%;
+    height: 35em;
+    background: rgba(254,255,249,0.83);
+    margin-top: 4em;
+    margin-left: 5em;
+    border-radius: 9px;
+}
+
+img {
+    width: 4em;
+    border-radius: 60px;
+}
+
+aside {
+    justify-content: center;
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
 }
 
 
