@@ -10,7 +10,4 @@
 //     return x
 // }
 
-console.log('this is a log')
-
-
-
+// console.log('this is a log')
