@@ -5,6 +5,7 @@ $(function () {
     $('p').css('background-color', 'yellow')
     $('li').css('background-color', 'yellow')
     alert(h1)
+    $('h1, p, li').css('background-color', 'yellow')
 
 });
 
