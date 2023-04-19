@@ -1,7 +1,5 @@
 $(function() {
-    // alert( 'The DOM has finished loading!' );
-    const div = $('.select-this').html()
-    console.log(div)
+$('.codeup').css('border', '1px solid   red')
 
 
 
