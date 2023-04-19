@@ -1,7 +1,10 @@
-$(function() {
-$('.codeup').css('border', '1px solid   red')
-
-
+$(function () {
+    $('li').css('font-size', '20px')
+    const h1 = $('h1').html()
+    $('h1').css('background-color', 'yellow')
+    $('p').css('background-color', 'yellow')
+    $('li').css('background-color', 'yellow')
+    alert(h1)
 
 });
 
