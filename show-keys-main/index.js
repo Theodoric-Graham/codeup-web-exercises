@@ -53,7 +53,7 @@ const handler = (event) => {
         keys = [];
         render();
       }
-    }, 4000);
+    }, 1000);
   };
 
   keys = newKeys;
