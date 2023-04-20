@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+<body>
+<h1>Konami Code</h1>
+
+<script src="js/jquery-3.6.4.js"></script>
+<script>
+
+    const konami = function () {
+        var konamikeys = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+            started = false,
+            count = 0;
+
+        $(document).keydown(function (e) {
+            var reset = function () {
+                started = false;
+                count = 0;
+                return;
+            };
+
+            let key = e.keyCode;
+            console.log(key);
+
+
+            // Begin watching if first key in sequence was pressed.
+            if (!started) {
+                if (key == 38) {
+                    started = true;
+                }
+            }
+
+            // If we've started, pay attention to key presses, looking for right sequence.
+            if (started) {
+
+                if (konamikeys[count] == key) {
+                    count++;
+                } else {
+                    console.log('incorrect input')
+                    // Incorrect key, restart.
+                    reset();
+                }
+                if (count == 10) {
+                    // Success!
+                    alert('You have added 30 lives');
+                    reset();
+                }
+            } else {
+                reset();
+            }
+        });
+    }
+    konami();
+</script>
+
+</body>
+</html>
