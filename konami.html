@@ -2,17 +2,115 @@
 <html>
 <head>
     <title>Konami Code</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content=
+            "width=device-width,
+        initial-scale=1,
+        shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/konami.css">
+    <script src="show-keys-main/index.js"></script>
+
 </head>
 <body>
-<h1>Konami Code</h1>
+<nav class="navbar ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="images/Konami-Logo.wine.png" class="d-inline-block align-text-top">
+        </a>
+        <button class="btn btn-primary code-enter">Enter Code!</button>
+    </div>
+</nav>
+<div class="konami-img-div d-flex align-content-center">
+    <img class="konami-img" src="images/Konami-Recruitment-Art.jpg">
+
+</div>
+
+<!-- Button trigger modal start -->
+<button type="button" class="btn btn-primary hide-start" data-bs-toggle="modal" data-bs-target="#startModal">
+</button>
+
+<!-- Modal start-->
+<div class="modal fade" id="startModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="startModalLabel">Enter your Code</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img class="red-konami" src="images/red-konami.webp">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal success -->
+<button type="button" class="btn btn-primary hide-success" data-bs-toggle="modal" data-bs-target="#successModal">
+</button>
+
+<!-- Modal Success-->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Code correct!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                You have added 30 lives!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal failure -->
+<button type="button" class="btn btn-primary hide-fail" data-bs-toggle="modal" data-bs-target="#failModal">
+</button>
+
+<!-- Modal Fail-->
+<div class="modal fade" id="failModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="failModalLabel">Whoops!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Incorrect code entered! Please try again.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script src="js/jquery-3.6.4.js"></script>
 <script>
+
+
+
 
     const konami = function () {
         var konamikeys = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
             started = false,
             count = 0;
+
+        $('.code-enter').click(() => {
+            started = true
+            $('.hide-start').trigger('click');
+        })
+
 
         $(document).keydown(function (e) {
             var reset = function () {
@@ -24,13 +122,12 @@
             let key = e.keyCode;
             console.log(key);
 
-
             // Begin watching if first key in sequence was pressed.
-            if (!started) {
-                if (key == 38) {
-                    started = true;
-                }
-            }
+            // if (!started) {
+            //     if (key == 38) {
+            //         started = true;
+            //     }
+            // }
 
             // If we've started, pay attention to key presses, looking for right sequence.
             if (started) {
@@ -38,13 +135,12 @@
                 if (konamikeys[count] == key) {
                     count++;
                 } else {
-                    console.log('incorrect input')
-                    // Incorrect key, restart.
+                    $('.hide-fail').trigger('click');                    // Incorrect key, restart.
                     reset();
                 }
                 if (count == 10) {
                     // Success!
-                    alert('You have added 30 lives');
+                    $('.hide-success').trigger('click');
                     reset();
                 }
             } else {
@@ -54,6 +150,9 @@
     }
     konami();
 </script>
+
+<script src="bootstrap/js/bootstrap.js"></script>
+
 
 </body>
 </html>
