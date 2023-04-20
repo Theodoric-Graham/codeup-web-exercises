@@ -53,7 +53,7 @@ const handler = (event) => {
         keys = [];
         render();
       }
-    }, 1000);
+    }, 4000);
   };
 
   keys = newKeys;
@@ -62,14 +62,18 @@ const handler = (event) => {
   dismissAfterTimeout();
 };
 
-const css = `
+const css =
+    // Defaults
+    //     top: 20px;
+    //     right: 20px;
+    `
   [data-keys] {
     display: flex;
     background: #2e2e2e;
     border-radius: 10px;
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 200px;
+    right: 900px;
     padding: 10px 10px 12px;
     font-size: 24px;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -121,7 +125,8 @@ const ensureContainer = () => {
   if (!container) {
     container = document.createElement('div');
     container.setAttribute('data-keys', '');
-    document.body.append(container);
+    // Original Code document.body.append(container);
+    document.querySelector('#startModal').append(container)
     return container;
   } else {
     return container;

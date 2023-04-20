@@ -27,6 +27,12 @@ h1 {
     object-fit: cover;
 }
 
+.code-enter {
+    background-color: white;
+    color: red;
+    font-size: 22px;
+}
+
 .konami-img-div {
     height: 100vh;
 }
