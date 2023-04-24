@@ -19,18 +19,18 @@
 
 <dl>
     <dt>Who is the director of the National Park Service?</dt>
-    <dd class="invisible">Charles F. "Chuck" Sams III is the Director of the National Park Service.
+    <dd >Charles F. "Chuck" Sams III is the Director of the National Park Service.
     </dd>
     <dt>What government agency oversees the National Park Service?
     </dt>
-    <dd class="invisible">The National Park Service is a bureau of the Department of the Interior. Directly overseeing
+    <dd >The National Park Service is a bureau of the Department of the Interior. Directly overseeing
         its operation is
         the department's Assistant Secretary for Fish, Wildlife and Parks.
 
     </dd>
     <dt>How many employees are in the National Park Service?
     </dt>
-    <dd class="invisible">
+    <dd >
         <ul>
             <li>Permanent, temporary, and seasonal employees: Approximately 20,000
             </li>
@@ -40,7 +40,7 @@
     </dd>
     <dt>How old is the National Park System?
     </dt>
-    <dd class="invisible">The National Park Service was created by an act signed by President Woodrow Wilson on August
+    <dd >The National Park Service was created by an act signed by President Woodrow Wilson on August
         25, 1916.
         Yellowstone National Park was established by an act signed by President Ulysses S. Grant on March 1, 1872, as
         the nation's first national park.
@@ -48,7 +48,7 @@
     </dd>
     <dt>What is the origin of the National Park Service arrowhead?
     </dt>
-    <dd class="invisible">The arrowhead was authorized as the official National Park Service emblem by the Secretary of
+    <dd >The arrowhead was authorized as the official National Park Service emblem by the Secretary of
         the Interior on
         July 20, 1951. The components of the arrowhead may have been inspired by key attributes of the National Park
         System, with the sequoia tree and bison representing vegetation and wildlife, the mountains and water
@@ -57,7 +57,7 @@
     </dd>
     <dt>How many areas are in the National Park System?
     </dt>
-    <dd class="invisible">The system includes 424 areas covering more than 85 million acres in every state, the District
+    <dd>The system includes 424 areas covering more than 85 million acres in every state, the District
         of Columbia,
         American Samoa, Guam, Puerto Rico, and the Virgin Islands. These areas include national parks, monuments,
         battlefields, military parks, historical parks, historic sites, lakeshores, seashores, recreation areas, scenic
@@ -67,7 +67,7 @@
     </dd>
     <dt>What is the largest national park site? Smallest?
     </dt>
-    <dd class="invisible">
+    <dd>
         <ul>
             <li>Largest: Wrangell-St. Elias National Park and Preserve, AK, at 13.2 million acres
             </li>
@@ -77,18 +77,18 @@
     </dd>
     <dt>How many people visit the national parks?
     </dt>
-    <dd class="invisible">Total recreation visitors to the national parks in 2021: 297,115,406.
+    <dd>Total recreation visitors to the national parks in 2021: 297,115,406.
     </dd>
     <dt>Where can I find a park map?
 
     </dt>
-    <dd class="invisible">You can view maps on specific park websites or find national park, National Park System,
+    <dd>You can view maps on specific park websites or find national park, National Park System,
         National Trails System,
         and other maps.
     </dd>
     <dt>How do I make reservations for camping/lodging in national parks?
     </dt>
-    <dd class="invisible">For campground reservations, visit Recreation.gov. Not all parks participate in this service;
+    <dd >For campground reservations, visit Recreation.gov. Not all parks participate in this service;
         many campgrounds
         are first come, first served. For more information on specific camping and lodging services offered at the
         park(s) of your interest, please check specific park websites. You can also learn more about camping in national
@@ -96,7 +96,7 @@
     </dd>
     <dt>Can I bring my pet to a national park?
     </dt>
-    <dd class="invisible">Some national parks welcome pets—in developed areas, on many trails and campgrounds, and in
+    <dd>Some national parks welcome pets—in developed areas, on many trails and campgrounds, and in
         some lodging
         facilities.
     </dd>
@@ -111,13 +111,12 @@
 
     $('.toggle-btn').click(() => {
         $('dd').toggleClass('invisible')
-
     })
 
     $('dt').click((e) => {
         const target = e.target
-        $(target).toggleClass('highlight')
-
+        console.log(target)
+        $(this).toggleClass('highlight')
     })
 </script>
 
