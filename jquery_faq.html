@@ -8,6 +8,10 @@
         .invisible {
             visibility: hidden
         }
+
+        .highlight {
+            background: yellow;
+        }
     </style>
 
 </head>
@@ -107,6 +111,12 @@
 
     $('.toggle-btn').click(() => {
         $('dd').toggleClass('invisible')
+
+    })
+
+    $('dt').click((e) => {
+        const target = e.target
+        $(target).toggleClass('highlight')
 
     })
 </script>
