@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Jquery FAQ</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
     <style>
         .invisible {
@@ -16,25 +17,54 @@
         dt {
             font-weight: bold;
         }
+
+        .bold {
+            font-weight: bold;
+        }
+
+
+        .boxy {
+            width: 200px;
+            height: 200px;
+        }
+
+        .tech {
+            background-image: url('/images/techparts.jpg');
+            background-size: cover;
+        }
+
+        .engineer {
+            background-image: url("images/engineer.jpg");
+            background-size: cover;
+
+
+        }
+
+        .nature {
+            background-image: url("images/nature.jpg");
+            background-size: cover;
+
+        }
     </style>
+
 
 </head>
 <body>
 
 <dl>
     <dt>Who is the director of the National Park Service?</dt>
-    <dd >Charles F. "Chuck" Sams III is the Director of the National Park Service.
+    <dd>Charles F. "Chuck" Sams III is the Director of the National Park Service.
     </dd>
     <dt>What government agency oversees the National Park Service?
     </dt>
-    <dd >The National Park Service is a bureau of the Department of the Interior. Directly overseeing
+    <dd>The National Park Service is a bureau of the Department of the Interior. Directly overseeing
         its operation is
         the department's Assistant Secretary for Fish, Wildlife and Parks.
 
     </dd>
     <dt>How many employees are in the National Park Service?
     </dt>
-    <dd >
+    <dd>
         <ul>
             <li>Permanent, temporary, and seasonal employees: Approximately 20,000
             </li>
@@ -44,7 +74,7 @@
     </dd>
     <dt>How old is the National Park System?
     </dt>
-    <dd >The National Park Service was created by an act signed by President Woodrow Wilson on August
+    <dd>The National Park Service was created by an act signed by President Woodrow Wilson on August
         25, 1916.
         Yellowstone National Park was established by an act signed by President Ulysses S. Grant on March 1, 1872, as
         the nation's first national park.
@@ -52,7 +82,7 @@
     </dd>
     <dt>What is the origin of the National Park Service arrowhead?
     </dt>
-    <dd >The arrowhead was authorized as the official National Park Service emblem by the Secretary of
+    <dd>The arrowhead was authorized as the official National Park Service emblem by the Secretary of
         the Interior on
         July 20, 1951. The components of the arrowhead may have been inspired by key attributes of the National Park
         System, with the sequoia tree and bison representing vegetation and wildlife, the mountains and water
@@ -92,7 +122,7 @@
     </dd>
     <dt>How do I make reservations for camping/lodging in national parks?
     </dt>
-    <dd >For campground reservations, visit Recreation.gov. Not all parks participate in this service;
+    <dd>For campground reservations, visit Recreation.gov. Not all parks participate in this service;
         many campgrounds
         are first come, first served. For more information on specific camping and lodging services offered at the
         park(s) of your interest, please check specific park websites. You can also learn more about camping in national
@@ -105,24 +135,135 @@
         facilities.
     </dd>
 
+    <a href='#' class="toggle-btn">Toggle answers!</a>
+
 </dl>
 
-<a href='#' class="toggle-btn">Click here to see answers!</a>
+<h3 id="1">Park 1</h3>
+<ul class="facts">
+    <li>Fact 1</li>
+    <li>Fact 2</li>
+    <li>Fact 3</li>
+    <li class="last">last</li>
+</ul>
+<h3 id="2">Park 2</h3>
+<ul class="facts">
+    <li>Fact 1</li>
+    <li>Fact 2</li>
+    <li>Fact 3</li>
+    <li>last one</li>
+</ul>
+<div class="parent-div">
+    <h3 id="3">Park 3</h3>
+    <ul class="facts">
+        <li>Fact 1</li>
+        <li>Fact 2</li>
+        <li>Fact 3</li>
+        <li>VERY last one</li>
+    </ul>
+</div>
 
+
+<button class="btn-highlight">Highlight Last</button>
+
+<div class="d-flex ">
+    <div class="d-flex flex-column tech boxy">
+        <button class="swap-left">Swap</button>
+    </div>
+    <div class="d-flex flex-column boxy engineer">
+        <button class="swap-middle">Swap</button>
+    </div>
+    <div class="d-flex flex-column boxy nature">
+        <button class="swap-right">Swap</button>
+    </div>
+</div>
+
+
+<!--Jquery Script-->
 <script src="js/jquery-3.6.4.js"></script>
 
+<!--Custom internal JS-->
 <script>
 
+    //Toggle hide on dd
     $('.toggle-btn').click(() => {
         $('dd').toggleClass('invisible')
     })
 
+    //Highlight dt when clicked
     $('dt').click((e) => {
+        e.preventDefault()
         const target = e.target
         console.log(target)
         $(target).toggleClass('highlight')
     })
+
+    //Highlight last list item
+    $('.btn-highlight').click(() => {
+        $('.facts').each((index, el) => {
+            // if using children with a selector
+            // const lastList = $(el).children('.last')
+            const lastList = $(el).children().last()
+            console.log(lastList);
+            $(lastList).toggleClass('highlight')
+        })
+
+    })
+
+    //highlight li's underneath clicked h3
+    $('h3').click((e) => {
+        const target = e.target
+        console.log($(target).next().children())
+        $(target).next().children().toggleClass('bold')
+    })
+
+    //highlight all li's underneath clicked h3 (DIRTY)
+    // $('h3').click((e) => {
+    //     const targetID = e.target.id
+    //     // console.log(targetID)
+    //     // console.log($('.facts'))
+    //     const factList = $('.facts')
+    //     $(factList).each((i, el) => {
+    //         if (targetID - 1 === 0) {
+    //             $(el).children().toggleClass('bold')
+    //         } else if (targetID - 1 !== 0) {
+    //             $(factList[targetID - 1]).children().toggleClass('bold')
+    //             $(factList[targetID]).children().toggleClass('bold')
+    //         }
+    //     })
+    // })
+
+    //BONUS
+    const left = $('.swap-left')
+    const middle = $('.swap-middle')
+    const right = $('.swap-right')
+
+    // The rules are the following:
+    //     The left frame swaps to the right and takes the image from the frame in the center.
+    //     The center frame swaps randomly to either the left or right.
+    //     The right frame swaps to the left and takes the image from the frame in the center.
+
+
+    //left button
+    $(left).click(() => {
+
+        console.log('clicked')
+
+    })
+
+    //middle button
+    $(middle).click(() => {
+        console.log('clicked')
+    })
+
+    //right button
+    $(right).click(() => {
+        console.log('clicked')
+    })
+
+
 </script>
+
 
 </body>
 </html>
