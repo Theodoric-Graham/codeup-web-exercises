@@ -166,14 +166,14 @@
 
 <button class="btn-highlight">Highlight Last</button>
 
-<div class="d-flex ">
-    <div class="d-flex flex-column tech boxy">
+<div class="d-flex">
+    <div class="d-flex flex-column tech boxy picture-1">
         <button class="swap-left">Swap</button>
     </div>
-    <div class="d-flex flex-column boxy engineer">
+    <div class="d-flex flex-column boxy engineer picture-2">
         <button class="swap-middle">Swap</button>
     </div>
-    <div class="d-flex flex-column boxy nature">
+    <div class="d-flex flex-column boxy nature picture-3">
         <button class="swap-right">Swap</button>
     </div>
 </div>
@@ -233,7 +233,7 @@
     //     })
     // })
 
-    //BONUS
+    //BONUS (dirty solution) TODO find a way to use next and previous instead of classes
     const left = $('.swap-left')
     const middle = $('.swap-middle')
     const right = $('.swap-right')
@@ -243,23 +243,80 @@
     //     The center frame swaps randomly to either the left or right.
     //     The right frame swaps to the left and takes the image from the frame in the center.
 
+    let clicked
 
     //left button
     $(left).click(() => {
-
-        console.log('clicked')
-
+        if (!clicked) {
+            clicked = true
+            //remove tech class
+            $('.picture-1').removeClass('tech')
+            //add tech class to engineer div
+            $('.picture-1').addClass('engineer')
+            //remove engineer class
+            $('.picture-2').removeClass('engineer')
+            //add engineer class to tech div
+            $('.picture-2').addClass('tech')
+        } else {
+            clicked = false
+            //remove engineer class
+            $('.picture-1').removeClass('engineer')
+            //add engineer class to tech div
+            $('.picture-2').addClass('engineer')
+            //remove engineer class from tech
+            $('.picture-1').removeClass('engineer')
+            //add tech class to engineer div
+            $('.picture-1').addClass('tech')
+        }
     })
 
     //middle button
     $(middle).click(() => {
-        console.log('clicked')
-    })
+        if (!clicked) {
+            clicked = true
+            //remove engineer class
+            $('.picture-2').removeClass('engineer')
+            //add engineer class to nature div
+            $('.picture-3').addClass('engineer')
+            //remove nature class
+            $('.picture-3').removeClass('nature')
+            //add engineer class to tech div
+            $('.picture-2').addClass('nature')
+        } else {
+            clicked = false
+            //remove engineer class
+            $('.picture-3').removeClass('engineer')
+            //add engineer class
+            $('.picture-2').addClass('engineer')
+            //remove nature class
+            $('.picture-2').removeClass('nature')
+            //add nature class
+            $('.picture-3').addClass('nature')
+        }    })
 
     //right button
     $(right).click(() => {
-        console.log('clicked')
-    })
+        if (!clicked) {
+            clicked = true
+            //remove tech class
+            $('.picture-3').removeClass('nature')
+            //add tech class to engineer div
+            $('.picture-2').addClass('nature')
+            //remove tech class from engineer
+            $('.picture-2').removeClass('engineer')
+            //add engineer class to tech div
+            $('.picture-3').addClass('engineer')
+        } else {
+            clicked = false
+            //remove engineer class
+            $('.picture-2').removeClass('nature')
+            //add engineer class to tech div
+            $('.picture-2').addClass('engineer')
+            //remove engineer class from tech
+            $('.picture-3').removeClass('engineer')
+            //add tech class to engineer div
+            $('.picture-3').addClass('nature')
+        }    })
 
 
 </script>
