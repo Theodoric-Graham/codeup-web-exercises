@@ -2,12 +2,22 @@
 <html>
 <head>
     <title>Online Store</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid ">
+        <a class="navbar-brand" href="#">
+            <img src="images/tool-logo.jpeg" alt="" width="50" class="d-inline-block">
+            My Tool Store
+        </a>
 
-<h1>My Tool Store</h1>
+        <button class="btn btn-outline-dark" id="dark">Dark Mode</button>
+    </div>
+</nav>
 
-<table id="products">
+
+<table class="table table-striped table-hover table-bordered" id="products">
     <thead>
     <tr>
         <th>Title</th>
@@ -18,31 +28,31 @@
     </thead>
     <tbody id="insertProducts"></tbody>
 </table>
-<button id="refresh">Refresh Inventory</button>
+<button class="btn btn-primary" id="refresh">Refresh Inventory</button>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<!--JQuery Script-->
+<script src="js/jquery-3.6.4.js"></script>
 
+<!--Custom Inline Script-->
 <script>
     (function () {
         "use strict";
         // TODO: Create an AJAX GET request for the file under data/inventory.json
         $.get('data/inventory.json').done(function (data) {
-            // console.log(data);
-            // TODO: Take the data from inventory.json and append it to the products table
+            //       HINT: Your data should come back as a JSON object; use console.log() to inspect its contents and fields
+            console.log(data);
 
-
-            //       HINT: Your data should come back as a JSON object; use console.log() to inspect
-            //             its contents and fields
-            //       HINT: You will want to target #insertProducts for your new HTML elements
             const createMarkup = () => {
                 let markup = ''
                 data.forEach(el => {
-                    // console.log(el)
-                    // console.log(markup)
                     markup += `<tr><td>${el.title}</td><td>${el.quantity}</td><td>${el.price}</td><td>${el.categories}</td></tr>`
                 })
-                $('#insertProducts').append(`${markup}`)
+                // TODO: Take the data from inventory.json and append it to the products table
+                // Use .html not .append, causes unintended behavior with click event
+                // $('#insertProducts').append(`${markup}`)
+
+                //       HINT: You will want to target #insertProducts for your new HTML elements
+                $('#insertProducts').html(`${markup}`)
             }
 
             $('#refresh').click(createMarkup)
