@@ -30,9 +30,9 @@
 
 
     // Adding a marker
-    var marker = new mapboxgl.Marker()
-        .setLngLat([-98.488113, 29.41776])
-        .addTo(map);
+    // var marker = new mapboxgl.Marker()
+    //     .setLngLat([-98.488113, 29.41776])
+    //     .addTo(map);
 
     // Adding a popup
     // var popup = new mapboxgl.Popup()
@@ -41,18 +41,18 @@
     //     .addTo(map)
 
     // Creating a popup with marker
-    // var alamoPopup = new mapboxgl.Popup()
-    //     .setHTML("<p>this is not the alamo!?</p>")
+    // var restarauntPopup = new mapboxgl.Popup()
+    //     .setHTML("<p>Battalion: Best pasta in town! For a great price!</p>")
     // Adding popup to marker
-    // marker.setPopup(alamoPopup)
+    // marker.setPopup(restarauntPopup)
 
     // the  geocode method from mapbox-geocoder-utils.js
-    geocode("604 S Alamo\n" +
-        "San Antonio, TX 78205", mapboxgl.accessToken).then(function (result) {
-        console.log(result);
-        map.setCenter(result);
-        map.setZoom(19);
-    });
+    // geocode("604 S Alamo\n" +
+    //     "San Antonio, TX 78205", mapboxgl.accessToken).then(function (result) {
+    //     console.log(result);
+    //     map.setCenter(result);
+    //     map.setZoom(19);
+    // });
 
     // reverse geocode method from mapbox-geocoder-utils.js
     // reverseGeocode({lng: -98.4861, lat: 29.4260},  mapboxgl.accessToken).then(function(results) {
@@ -60,10 +60,21 @@
     //     console.log(results);
     // });
 
-    var alamoInfo = {
-        address: "The Alamo, San Antonio",
-        popupHTML: "<p>Remember the Alamo!</p>"
-    };
+    var restaurants = [
+        {
+            address: "Battalion, San Antonio",
+            popupHTML: "<p>Battalion: Best Italian in town!</p>"
+        },
+        {
+            address: "Cullum's Attagirl, San Antonio",
+            popupHTML: "<p>Attagirl: Best Chicken in town!</p>"
+        },
+        {
+            address: "Kimura, San Antonio",
+            popupHTML: "<p>Kimura: Best Ramen in town!</p>"
+        },
+
+    ];
 
     function placeMarkerAndPopup(info, token, map) {
         geocode(info.address, token).then(function (coordinates) {
@@ -73,12 +84,17 @@
                 .setLngLat(coordinates)
                 .addTo(map)
                 .setPopup(popup);
-            popup.addTo(map);
+            // Makes popup open on refresh
+            // popup.addTo(map);
         });
     }
 
-    placeMarkerAndPopup(alamoInfo, mapboxgl.accessToken, map);
+    // placeMarkerAndPopup(battalionInfo, mapboxgl.accessToken, map);
 
+    restaurants.forEach(el => {
+        console.log(el.address)
+        placeMarkerAndPopup(el, mapboxgl.accessToken, map)
+    })
 
 </script>
 
