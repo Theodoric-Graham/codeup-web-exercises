@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox API</title>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet'/>
+
+</head>
+<body>
+
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script>
+
+
+    // TO MAKE THE MAP APPEAR YOU MUST
+    // ADD YOUR ACCESS TOKEN FROM
+    // https://account.mapbox.com
+    mapboxgl.accessToken = 'pk.eyJ1IjoidC1ncmFoYW0iLCJhIjoiY2xneTNqejU1MDMxNjNzbm1qbnBkcGY3bSJ9.xhoYZ-qss1wUG97qr06pdQ';
+
+
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/satellite-streets-v12\n', // style URL
+        center: [-98.4916, 29.4252], // starting position [lng, lat]
+        zoom: 9, // starting zoom
+    });
+
+
+    // Adding a marker
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-98.488113, 29.41776])
+        .addTo(map);
+
+    // Adding a popup
+    // var popup = new mapboxgl.Popup()
+    //     .setLngLat([-98.489615, 29.426827])
+    //     .setHTML("<p>Codeup Rocks!</p>")
+    //     .addTo(map)
+
+    // Creating a popup with marker
+    // var alamoPopup = new mapboxgl.Popup()
+    //     .setHTML("<p>this is not the alamo!?</p>")
+    // Adding popup to marker
+    // marker.setPopup(alamoPopup)
+
+    // the  geocode method from mapbox-geocoder-utils.js
+    geocode("604 S Alamo\n" +
+        "San Antonio, TX 78205", mapboxgl.accessToken).then(function (result) {
+        console.log(result);
+        map.setCenter(result);
+        map.setZoom(19);
+    });
+
+    // reverse geocode method from mapbox-geocoder-utils.js
+    // reverseGeocode({lng: -98.4861, lat: 29.4260},  mapboxgl.accessToken).then(function(results) {
+    //     // logs the address for The Alamo
+    //     console.log(results);
+    // });
+
+    var alamoInfo = {
+        address: "The Alamo, San Antonio",
+        popupHTML: "<p>Remember the Alamo!</p>"
+    };
+
+    function placeMarkerAndPopup(info, token, map) {
+        geocode(info.address, token).then(function (coordinates) {
+            var popup = new mapboxgl.Popup()
+                .setHTML(info.popupHTML);
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map)
+                .setPopup(popup);
+            popup.addTo(map);
+        });
+    }
+
+    placeMarkerAndPopup(alamoInfo, mapboxgl.accessToken, map);
+
+
+</script>
+
+</body>
+</html>
