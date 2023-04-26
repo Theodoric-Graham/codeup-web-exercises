@@ -47,6 +47,7 @@
                 data.forEach(el => {
                     markup += `<tr><td>${el.title}</td><td>${el.quantity}</td><td>${el.price}</td><td>${el.categories}</td></tr>`
                 })
+                console.log(markup)
                 // TODO: Take the data from inventory.json and append it to the products table
                 // Use .html not .append, causes unintended behavior with click event
                 // $('#insertProducts').append(`${markup}`)
