@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Blog Posts</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
 </head>
 <body>
 <h1>Blog Posts</h1>
 <div id="posts">
+
 
 </div>
 
@@ -26,7 +27,20 @@
             data.forEach(el => {
                 // console.log(el)
                 // console.log(markup)
-                markup += `<h1>${el.title}</h1><h3>${el.date}</h3><h5>${el.categories}</h5><p>${el.content}</p>`
+                markup += `
+                <div class="card text-center mb-4">
+                  <div class="card-header">
+                    Categories: ${el.categories}
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">${el.title}</h5>
+                    <p class="card-text">${el.content}</p>
+
+                  </div>
+                  <div class="card-footer text-muted">
+                    ${el.date}
+                  </div>
+                </div>`
             })
             $('#posts').append(`${markup}`)
         })
