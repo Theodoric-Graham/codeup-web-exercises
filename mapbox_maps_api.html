@@ -29,6 +29,12 @@
         <a class="navbar-brand" href="#">Sticky top</a>
     </div>
 </nav>
+<!--<input class="address-input" type="text">-->
+<form>
+    <label for="address-input">Enter Address:</label><br>
+    <input type="text" id="address-input"><br><br>
+    <input id="input-btn" type="submit" value="Submit">
+</form>
 
 <label for="zoom">Zoom Level</label>
 
@@ -130,16 +136,21 @@
             //pass in animation options
             duration: 2000,
         });
-    })
+    });
 
     // Add a text box for the user to enter an address that will use geocoding to center the map and place a marker on that location.
+$('#input-btn').click(e => {
+    e.preventDefault()
+    console.log('clicked')
+    console.log($('#address-input').html);
 
+})
 
     // Add a button that will hide all markers.
     $('.btn-hide').click(() => {
         console.log('click')
         $('.mapboxgl-marker').toggleClass('hidden')
-    })
+    });
 
     // animate a marker to bounce up and down. Alter the animation to stop after two seconds. Make the amount of bounce animation scale according to zoom level.
 
