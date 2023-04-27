@@ -6,7 +6,6 @@
 
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
-
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet'/>
     <style>
@@ -50,6 +49,7 @@
 <div class="container" id='map' style='width: 100vw; height: 30vh;'></div>
 <script src="js/mapbox-geocoder-utils.js"></script>
 <script src="js/jquery-3.6.4.js"></script>
+<script src="js/keys.js"></script>
 
 <script>
 
@@ -57,7 +57,7 @@
     // TO MAKE THE MAP APPEAR YOU MUST
     // ADD YOUR ACCESS TOKEN FROM
     // https://account.mapbox.com
-    mapboxgl.accessToken = 'pk.eyJ1IjoidC1ncmFoYW0iLCJhIjoiY2xneTNqejU1MDMxNjNzbm1qbnBkcGY3bSJ9.xhoYZ-qss1wUG97qr06pdQ';
+    mapboxgl.accessToken = MAPBOX_KEY
 
 
     const map = new mapboxgl.Map({
@@ -91,6 +91,18 @@
     //     map.setCenter(result);
     //     map.setZoom(19);
     // });
+
+    const geocodeAddressMarker = (address, token) => {
+        geocode(address, token).then((res) => {
+            const newMarker = new mapboxgl.Marker()
+                .setLngLat(res)
+                .addTo(map);
+            console.log(res)
+            map.setCenter(res);
+            map.setZoom(19);
+        })
+
+    }
 
     // reverse geocode method from mapbox-geocoder-utils.js
     // reverseGeocode({lng: -98.4861, lat: 29.4260},  mapboxgl.accessToken).then(function(results) {
@@ -139,12 +151,17 @@
     });
 
     // Add a text box for the user to enter an address that will use geocoding to center the map and place a marker on that location.
-$('#input-btn').click(e => {
-    e.preventDefault()
-    console.log('clicked')
-    console.log($('#address-input').html);
+    $('#input-btn').click(e => {
+        e.preventDefault()
+        //capturing input
+        const inputAddress = $('#address-input').val()
+        //run geocode function with input
+        geocodeAddressMarker(inputAddress, MAPBOX_KEY)
+        // clear input field
+        $('#address-input').val('')
 
-})
+
+    })
 
     // Add a button that will hide all markers.
     $('.btn-hide').click(() => {
@@ -196,7 +213,7 @@ $('#input-btn').click(e => {
 
     //looping over restaurants array and creating a marker and popup dynamically
     restaurants.forEach(el => {
-        placeMarkerAndPopup(el, mapboxgl.accessToken, map)
+        placeMarkerAndPopup(el, MAPBOX_KEY, map)
     })
 
     //adds zoom buttons onto the map
