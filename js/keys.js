@@ -1,3 +1,0 @@
-const MAPBOX_KEY = 'pk.eyJ1IjoidC1ncmFoYW0iLCJhIjoiY2xneTNqejU1MDMxNjNzbm1qbnBkcGY3bSJ9.xhoYZ-qss1wUG97qr06pdQ'
-
-const OPENWEATHER_KEY = '13336aa66505c0793810a77d1c26d8f2'
