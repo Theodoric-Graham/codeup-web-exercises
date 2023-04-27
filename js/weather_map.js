@@ -25,7 +25,7 @@
         //creating markup string
         let markup = '';
         // loop over data.daily
-        data.daily.forEach(day => {
+        data.daily.forEach((day, i) => {
             // getting day from dt
             const dt = day.dt
             //converting dt into a date object
@@ -48,9 +48,11 @@
 
             //creating dynamic html
             markup += `
-            <div class="card text-center mb-4">
+
+        <div class="carousel-item ${i == 0 ? 'active' : ''}" >
+        <div class="card text-center d-block w-100 ">
               <div class="card-header">
-                ${currentDay}
+                ${currentDay} ${currentMonth} ${currentDate}
               </div>
               <div class="card-body">
               <img src="${weatherIcon}">
@@ -62,14 +64,20 @@
                 <p class="card-text">Night: ${nightTemp}</p>
               </div>
               <div class="card-footer text-muted">
-                ${currentMonth} ${currentDate}
+              <p class="tabs">tabs</p>
+                
               </div>
             </div>
+        </div>
+    
+    
+            
             `
         })
-        $('#weather-forecast').html(markup)
+        $('#carousel').html(markup)
 
     }
+
 
     fetchWeather(29.423017, -98.48527, 'imperial', OPENWEATHER_KEY)
 
