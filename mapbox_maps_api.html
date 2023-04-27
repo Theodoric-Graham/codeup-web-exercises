@@ -19,80 +19,127 @@
 </head>
 <body>
 
-<div id='map' style='width: 900px; height: 800px;'></div>
+
+<nav class="navbar sticky-top navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sticky top</a>
+    </div>
+</nav>
+
+<label for="zoom">Zoom Level</label>
+
+<select name="zoom" id="zoom">
+    <option value="5">5</option>
+    <option selected value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+</select>
+
+<div class="container" id='map' style='width: 100vw; height: 30vh;'></div>
 <script src="js/mapbox-geocoder-utils.js"></script>
-    <script>
+<script src="js/jquery-3.6.4.js"></script>
+
+<script>
 
 
-        // TO MAKE THE MAP APPEAR YOU MUST
-        // ADD YOUR ACCESS TOKEN FROM
-        // https://account.mapbox.com
-        mapboxgl.accessToken = 'pk.eyJ1IjoidC1ncmFoYW0iLCJhIjoiY2xneTNqejU1MDMxNjNzbm1qbnBkcGY3bSJ9.xhoYZ-qss1wUG97qr06pdQ';
+    // TO MAKE THE MAP APPEAR YOU MUST
+    // ADD YOUR ACCESS TOKEN FROM
+    // https://account.mapbox.com
+    mapboxgl.accessToken = 'pk.eyJ1IjoidC1ncmFoYW0iLCJhIjoiY2xneTNqejU1MDMxNjNzbm1qbnBkcGY3bSJ9.xhoYZ-qss1wUG97qr06pdQ';
 
 
-        const map = new mapboxgl.Map({
-            container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [-98.4916, 29.4252], // starting position [lng, lat]
-            zoom: 10, // starting zoom
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center: [-98.4916, 29.4252], // starting position [lng, lat]
+        zoom: 10, // starting zoom
+    });
+
+    // Adding a marker
+    // var marker = new mapboxgl.Marker()
+    //     .setLngLat([-98.488113, 29.41776])
+    //     .addTo(map);
+
+    // Adding a popup
+    // var popup = new mapboxgl.Popup()
+    //     .setLngLat([-98.489615, 29.426827])
+    //     .setHTML("<p>Codeup Rocks!</p>")
+    //     .addTo(map)
+
+    // Creating a popup with marker
+    // var restarauntPopup = new mapboxgl.Popup()
+    //     .setHTML("<p>Battalion: Best pasta in town! For a great price!</p>")
+    // Adding popup to marker
+    // marker.setPopup(restarauntPopup)
+
+    // the  geocode method from mapbox-geocoder-utils.js
+    // geocode("604 S Alamo\n" +
+    //     "San Antonio, TX 78205", mapboxgl.accessToken).then(function (result) {
+    //     console.log(result);
+    //     map.setCenter(result);
+    //     map.setZoom(19);
+    // });
+
+    // reverse geocode method from mapbox-geocoder-utils.js
+    // reverseGeocode({lng: -98.4861, lat: 29.4260},  mapboxgl.accessToken).then(function(results) {
+    //     // logs the address for The Alamo
+    //     console.log(results);
+    // });
+
+
+    const restaurants = [
+        {
+            name: "Battalion",
+            address: "604 S Alamo San Antonio, TX 78205",
+            type: "Italian/Pasta",
+            description: "Italian restaurant located in the Historic Firehouse 7",
+            website: "https://www.battalionsa.com/"
+        },
+        {
+            name: "Cullum's Attagirl",
+            address: "726 East Mistletoe Ave, San Antonio, TX 78212",
+            type: "Fried Chicken/Southern",
+            description: "WE ARE A “RUN DOWN” CHICKEN SHACK OUT OF A CONVERTED HISTORIC HOUSE DEDICATED TO OUR SOUTHERN GRANDMOTHER. IT’S BEER, WINGS AND DISCO! SAN ANTONIO LIKES US THIS WAY, SAME AS IT EVER WAS! WE COOK TO ORDER AND CHICKEN TAKES TIME (UNLESS YOU HIT THAT WALLY-WORLD CHICKEN) DRINK A FEW YUMMY BEERS WITH US! CHILL AND BE NICE!",
+            website: "https://www.cullumsattagirl.com/"
+        },
+        {
+            name: "Kimura",
+            // address: "Kimura, San Antonio",
+            address: "1017 N Flores St, San Antonio, TX 78212",
+            type: "Ramen/Sushi",
+            description: "Kimura is a traditional Japanese eatery, specializing in ramen and izakaya-style dishes such as chisaii (small dishes), noodles and rice, plus a full sake and cocktail menu. Kimura offers table seating, and front-row-to-the-action bar seating with a view to the Kimura kitchen, and outdoor patio seating.",
+            website: 'https://kimurasa.com/'
+        },
+
+    ];
+
+    // ########## BONUS SECTION #############//
+
+    // Add a select input that allows the user to change the zoom level to 5, 15, or 20.
+    $('select').change((e) => {
+        console.log('clicked')
+        const selectedZoom = (e.target.value)
+        //use .zoomTo to zoom to specified level
+        map.zoomTo(selectedZoom, {
+            //pass in animation options
+            duration: 2000,
         });
+    })
+
+    // Add a text box for the user to enter an address that will use geocoding to center the map and place a marker on that location.
+
+    // Add a button that will hide all markers.
+
+    // animate a marker to bounce up and down. Alter the animation to stop after two seconds. Make the amount of bounce animation scale according to zoom level.
+
+    // Replace the generic marker icon with an image that is more appropriate for each restaurant.
 
 
-        // Adding a marker
-        // var marker = new mapboxgl.Marker()
-        //     .setLngLat([-98.488113, 29.41776])
-        //     .addTo(map);
+        // ############################ //
 
-        // Adding a popup
-        // var popup = new mapboxgl.Popup()
-        //     .setLngLat([-98.489615, 29.426827])
-        //     .setHTML("<p>Codeup Rocks!</p>")
-        //     .addTo(map)
-
-        // Creating a popup with marker
-        // var restarauntPopup = new mapboxgl.Popup()
-        //     .setHTML("<p>Battalion: Best pasta in town! For a great price!</p>")
-        // Adding popup to marker
-        // marker.setPopup(restarauntPopup)
-
-        // the  geocode method from mapbox-geocoder-utils.js
-        // geocode("604 S Alamo\n" +
-        //     "San Antonio, TX 78205", mapboxgl.accessToken).then(function (result) {
-        //     console.log(result);
-        //     map.setCenter(result);
-        //     map.setZoom(19);
-        // });
-
-        // reverse geocode method from mapbox-geocoder-utils.js
-        // reverseGeocode({lng: -98.4861, lat: 29.4260},  mapboxgl.accessToken).then(function(results) {
-        //     // logs the address for The Alamo
-        //     console.log(results);
-        // });
-
-
-        var restaurants = [
-            {
-                address: "Battalion, San Antonio",
-                popupHTML: "<p>Battalion: Best Italian in town!</p>"
-            },
-            {
-                address: "Cullum's Attagirl, San Antonio",
-                popupHTML: "<p>Attagirl: Best Chicken in town!</p>"
-            },
-            {
-                name: "Kimura",
-                // address: "Kimura, San Antonio",
-                address: "1017 N Flores St, San Antonio, TX 78212",
-                type: "Ramen/Sushi",
-                description: "Kimura is a traditional Japanese eatery, specializing in ramen and izakaya-style dishes such as chisaii (small dishes), noodles and rice, plus a full sake and cocktail menu. Kimura offers table seating, and front-row-to-the-action bar seating with a view to the Kimura kitchen, and outdoor patio seating.",
-                popupHTML: ''
-            },
-
-        ];
-
-        const createMarkup = (restArray) => {
-            restArray.forEach(el => {
-                el.popupHTML = `
+    const createMarkup = (restArray) => {
+        restArray.forEach(el => {
+            el.popupHTML = `
             <div class="card text-center">
               <div class="card-header">
                 ${el.type}
@@ -100,37 +147,40 @@
               <div class="card-body">
                 <h5 class="card-title">${el.name}</h5>
                 <p class="card-text">${el.description}</p>
-                <a target="_blank" href="https://kimurasa.com/" class="btn btn-primary">Go to website!</a>
+                <a target="_blank" href="${el.website}" class="btn btn-primary">Go to website!</a>
               </div>
               <div class="card-footer text-muted">
                 ${el.address}
               </div>
             </div>`
-            })
-        }
-
-        const betterRestaurants = createMarkup(restaurants)
-
-        function placeMarkerAndPopup(info, token, map) {
-            geocode(info.address, token).then(function (coordinates) {
-                var popup = new mapboxgl.Popup()
-                    .setHTML(info.popupHTML);
-                var marker = new mapboxgl.Marker()
-                    .setLngLat(coordinates)
-                    .addTo(map)
-                    .setPopup(popup);
-                // Makes popup open on refresh
-                // popup.addTo(map);
-            });
-        }
-
-        // placeMarkerAndPopup(battalionInfo, mapboxgl.accessToken, map);
-
-        restaurants.forEach(el => {
-            placeMarkerAndPopup(el, mapboxgl.accessToken, map)
         })
+    }
 
-    </script>
+    createMarkup(restaurants)
 
-    </body>
+    //function that creates a marker and popup when given an object
+    const placeMarkerAndPopup = (info, token, map) => {
+        geocode(info.address, token).then(function (coordinates) {
+            var popup = new mapboxgl.Popup()
+                .setHTML(info.popupHTML);
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map)
+                .setPopup(popup);
+            // Makes popup open on refresh
+            // popup.addTo(map);
+        });
+    }
+
+    //looping over restaurants array and creating a marker and popup dynamically
+    restaurants.forEach(el => {
+        placeMarkerAndPopup(el, mapboxgl.accessToken, map)
+    })
+
+    //adds zoom buttons onto the map
+    map.addControl(new mapboxgl.NavigationControl());
+
+</script>
+
+</body>
 </html>
