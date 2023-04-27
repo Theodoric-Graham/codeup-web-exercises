@@ -14,6 +14,10 @@
             max-width: 360px !important;
         }
 
+        .hidden {
+            visibility: hidden;
+        }
+
     </style>
 
 </head>
@@ -34,6 +38,8 @@
     <option value="15">15</option>
     <option value="20">20</option>
 </select>
+
+<button class="btn btn-primary btn-hide">Toggle Markers</button>
 
 <div class="container" id='map' style='width: 100vw; height: 30vh;'></div>
 <script src="js/mapbox-geocoder-utils.js"></script>
@@ -128,14 +134,19 @@
 
     // Add a text box for the user to enter an address that will use geocoding to center the map and place a marker on that location.
 
+
     // Add a button that will hide all markers.
+    $('.btn-hide').click(() => {
+        console.log('click')
+        $('.mapboxgl-marker').toggleClass('hidden')
+    })
 
     // animate a marker to bounce up and down. Alter the animation to stop after two seconds. Make the amount of bounce animation scale according to zoom level.
 
     // Replace the generic marker icon with an image that is more appropriate for each restaurant.
 
 
-        // ############################ //
+    // ############################ //
 
     const createMarkup = (restArray) => {
         restArray.forEach(el => {
@@ -161,12 +172,12 @@
     //function that creates a marker and popup when given an object
     const placeMarkerAndPopup = (info, token, map) => {
         geocode(info.address, token).then(function (coordinates) {
-            var popup = new mapboxgl.Popup()
+            const popup = new mapboxgl.Popup()
                 .setHTML(info.popupHTML);
-            var marker = new mapboxgl.Marker()
+            const marker = (new mapboxgl.Marker()
                 .setLngLat(coordinates)
                 .addTo(map)
-                .setPopup(popup);
+                .setPopup(popup))
             // Makes popup open on refresh
             // popup.addTo(map);
         });
