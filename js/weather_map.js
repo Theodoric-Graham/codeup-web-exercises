@@ -41,7 +41,6 @@
             const nightTemp = day.temp.night
 
             //getting weather icon
-            console.log(day.weather[0])
             const weatherIcon = `https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`
             const weather = day.weather[0].main
             const weatherDesc = day.weather[0].description
@@ -122,22 +121,52 @@
         $('.mapboxgl-marker').toggleClass('hidden')
     });
 
-    //function that creates a marker and popup when given an object
-    const placeMarkerAndPopup = (info, token, map) => {
-        geocode(info.address, token).then(function (coordinates) {
-            const popup = new mapboxgl.Popup()
-                .setHTML(info.popupHTML);
-            const marker = (new mapboxgl.Marker()
-                .setLngLat(coordinates)
-                .addTo(map)
-                .setPopup(popup))
-            // Makes popup open on refresh
-            // popup.addTo(map);
+    //stored globally to access them elsewhere
+    let coords = []
+    let marker;
+
+    // Listening for click on map
+    map.on('click', (e) => {
+        const lat = e.lngLat.lat
+        const lng = e.lngLat.lng
+        coords = [lng, lat]
+        if(marker) {
+            marker.remove()
+        }
+        marker = new mapboxgl.Marker()
+            .setLngLat(coords)
+            .addTo(map);
+        fetchWeather(lat, lng, 'imperial', OPENWEATHER_KEY)
+        reverseGeoAddress(lat, lng, MAPBOX_KEY)
+
+    })
+
+    const reverseGeoAddress = (lat, lng, token) => {
+        reverseGeocode({lng: lng, lat: lat},  token).then(function(results) {
+            // logs the address for The Alamo
+            console.log(results);
+            const city = results.split(',')[1]
+            const state = results.split(',')[2].replace(/[0-9]/g, '');
+            console.log(city, state);
         });
     }
 
+
+    // reverse geocode method from mapbox-geocoder-utils.js
+    // reverseGeocode({lng: -98.4861, lat: 29.4260},  mapboxgl.accessToken).then(function(results) {
+    //     // logs the address for The Alamo
+    //     console.log(results);
+    //     console.log(results.split(',')[2]);
+    //
+    //
+    //
+    // });
+
+
+    //adds zoom buttons on map
     map.addControl(new mapboxgl.NavigationControl());
 
+    // initial weather call
     fetchWeather(29.423017, -98.48527, 'imperial', OPENWEATHER_KEY)
 
 
