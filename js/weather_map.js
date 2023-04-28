@@ -68,16 +68,75 @@
                 
               </div>
             </div>
-        </div>
-    
-    
-            
+        </div>      
             `
         })
         $('#carousel').html(markup)
-
     }
 
+    mapboxgl.accessToken = MAPBOX_KEY
+
+
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center: [-98.4916, 29.4252], // starting position [lng, lat]
+        zoom: 10, // starting zoom
+    });
+
+    const geocodeAddressMarker = (address, token) => {
+        geocode(address, token).then((res) => {
+            const newMarker = new mapboxgl.Marker()
+                .setLngLat(res)
+                .addTo(map);
+            console.log(res)
+            map.setCenter(res);
+            map.setZoom(19);
+        })
+    }
+
+    $('select').change((e) => {
+        console.log('clicked')
+        const selectedZoom = (e.target.value)
+        //use .zoomTo to zoom to specified level
+        map.zoomTo(selectedZoom, {
+            //pass in animation options
+            duration: 2000,
+        });
+    });
+
+    $('#input-btn').click(e => {
+        console.log('clicked')
+        e.preventDefault()
+        //capturing input
+        const inputAddress = $('#address-input').val()
+        //run geocode function with input
+        geocodeAddressMarker(inputAddress, MAPBOX_KEY)
+        // clear input field
+        $('#address-input').val('')
+
+    })
+
+    $('.btn-hide').click(() => {
+        console.log('click')
+        $('.mapboxgl-marker').toggleClass('hidden')
+    });
+
+    //function that creates a marker and popup when given an object
+    const placeMarkerAndPopup = (info, token, map) => {
+        geocode(info.address, token).then(function (coordinates) {
+            const popup = new mapboxgl.Popup()
+                .setHTML(info.popupHTML);
+            const marker = (new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map)
+                .setPopup(popup))
+            // Makes popup open on refresh
+            // popup.addTo(map);
+        });
+    }
+
+    map.addControl(new mapboxgl.NavigationControl());
 
     fetchWeather(29.423017, -98.48527, 'imperial', OPENWEATHER_KEY)
 

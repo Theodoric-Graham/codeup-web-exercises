@@ -7,3 +7,11 @@
 .tabs {
     color: #f8f8f8;
 }
+
+.mapboxgl-popup {
+    max-width: 360px !important;
+}
+
+.hidden {
+    visibility: hidden;
+}
