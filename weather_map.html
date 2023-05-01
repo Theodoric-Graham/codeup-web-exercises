@@ -9,7 +9,28 @@
     <link rel="stylesheet" href="css/weather_map.css">
 </head>
 <body>
-<h1>Weather APP</h1>
+<header>
+    <h1></h1>
+    <div class="input-group mb-3 container justify-content-center ">
+        <form class="d-flex">
+
+            <input id="address-input" type="text" class="form-control" placeholder="Enter Address"
+                   aria-label="enter address"
+                   aria-describedby="button-addon2">
+            <input class="btn btn-light btn-outline-dark" type="submit" id="input-btn" value="Submit">
+        </form>
+
+    </div>
+</header>
+<div class="city-state">
+
+</div>
+
+<!--<form class="d-flex">-->
+<!--    <label for="address-input">Enter Address:</label><br>-->
+<!--    <input type="text" id="address-input"><br><br>-->
+<!--    <input id="input-btn" type="submit" value="Submit">-->
+<!--</form>-->
 <div id="carouselExampleIndicators" class="carousel slide carousel-dark container" data-interval="false">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -45,23 +66,38 @@
 </div>
 
 <!--MAPBOX HTML-->
-<form>
-    <label for="address-input">Enter Address:</label><br>
-    <input type="text" id="address-input"><br><br>
-    <input id="input-btn" type="submit" value="Submit">
-</form>
 
-<label for="zoom">Zoom Level</label>
-<select name="zoom" id="zoom">
-    <option value="5">5</option>
-    <option selected value="10">10</option>
-    <option value="15">15</option>
-    <option value="20">20</option>
-</select>
 
-<button class="btn btn-primary btn-hide">Toggle Markers</button>
+<!--zoom selector-->
+<!--<label for="zoom">Zoom Level</label>-->
+<!--<select name="zoom" id="zoom">-->
+<!--    <option value="5">5</option>-->
+<!--    <option selected value="10">10</option>-->
+<!--    <option value="15">15</option>-->
+<!--    <option value="20">20</option>-->
+<!--</select>-->
 
-<div class="container" id='map' style='width: 100vw; height: 30vh;'></div>
+<!--toggle markers-->
+<!--<button class="btn btn-primary btn-hide">Toggle Markers</button>-->
+
+
+<div class="container" id='map' style='    width: 696px;
+  height:40vh;'></div>
+
+<footer>
+    <div class="logo-container d-flex justify-content-center">
+        <span>Powered by</span>
+        <img
+                src="images/openweatherlogo.png"
+                alt="open weather map logo"
+                class="logo-open-weather"
+        />
+        <span>     &     </span>
+        <img src="images/mapbox-logo-black.svg"
+             class="logo-map-box"
+        >
+    </div>
+</footer>
 
 <script src="js/mapbox-geocoder-utils.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>

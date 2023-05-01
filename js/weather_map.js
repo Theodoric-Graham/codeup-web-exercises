@@ -8,14 +8,18 @@
             lon: lon,
             units: units
         }).done(function (data) {
-
-            console.log('The entire response:', data);
-            console.log('Diving in - here is current information: ', data.current);
-            console.log('A step further - information for tomorrow: ', data.daily[1]);
+            // console.log('The entire response:', data);
+            // console.log('Diving in - here is current information: ', data.current);
+            // console.log('A step further - information for tomorrow: ', data.daily[1]);
             getForecast(data)
 
         });
     }
+
+
+
+
+
 
     const getForecast = (data) => {
         //used to dynamically set days
@@ -26,6 +30,7 @@
         let markup = '';
         // loop over data.daily
         data.daily.forEach((day, i) => {
+            console.log(day)
             // getting day from dt
             const dt = day.dt
             //converting dt into a date object
@@ -47,20 +52,19 @@
 
             //creating dynamic html
             markup += `
-
         <div class="carousel-item ${i == 0 ? 'active' : ''}" >
         <div class="card text-center d-block w-100 ">
               <div class="card-header">
-                ${currentDay} ${currentMonth} ${currentDate}
+                ${currentDay}, ${currentMonth} ${currentDate}
               </div>
               <div class="card-body">
               <img src="${weatherIcon}">
-              <h2>${weather}</h2>
-              <p>${weatherDesc}</p>
-                <h5 class="card-title">${currentTemp}</h5>
-                <p class="card-text">High: ${highTemp}</p>
-                <p class="card-text">Low: ${lowTemp}</p>
-                <p class="card-text">Night: ${nightTemp}</p>
+              <h2 class="card-weather">${weather}</h2>
+                <h5 class="card-title">${currentTemp} &#8457;</h5>
+                <p class="card-text">High: ${highTemp} &#8457;</p>
+                <p class="card-text">Low: ${lowTemp} &#8457;</p>
+                <p class="card-text">Humidity: ${day.humidity}</p>
+                <p class="card-text">Wind: ${day.wind_speed} mph</p>
               </div>
               <div class="card-footer text-muted">
               <p class="tabs">tabs</p>
@@ -83,26 +87,26 @@
         zoom: 10, // starting zoom
     });
 
+
+    //stored globally to access them elsewhere
+    let coords = []
+    let marker;
+
     const geocodeAddressMarker = (address, token) => {
         geocode(address, token).then((res) => {
-            const newMarker = new mapboxgl.Marker()
+            if (marker) {
+                marker.remove()
+            }
+            marker = new mapboxgl.Marker()
                 .setLngLat(res)
                 .addTo(map);
-            console.log(res)
             map.setCenter(res);
-            map.setZoom(19);
+            map.setZoom(10);
+            reverseGeoAddress(res[1], res[0], MAPBOX_KEY)
+
+
         })
     }
-
-    $('select').change((e) => {
-        console.log('clicked')
-        const selectedZoom = (e.target.value)
-        //use .zoomTo to zoom to specified level
-        map.zoomTo(selectedZoom, {
-            //pass in animation options
-            duration: 2000,
-        });
-    });
 
     $('#input-btn').click(e => {
         console.log('clicked')
@@ -116,14 +120,22 @@
 
     })
 
-    $('.btn-hide').click(() => {
-        console.log('click')
-        $('.mapboxgl-marker').toggleClass('hidden')
-    });
+    // $('select').change((e) => {
+    //     console.log('clicked')
+    //     const selectedZoom = (e.target.value)
+    //     //use .zoomTo to zoom to specified level
+    //     map.zoomTo(selectedZoom, {
+    //         //pass in animation options
+    //         duration: 2000,
+    //     });
+    // });
 
-    //stored globally to access them elsewhere
-    let coords = []
-    let marker;
+
+    // $('.btn-hide').click(() => {
+    //     console.log('click')
+    //     $('.mapboxgl-marker').toggleClass('hidden')
+    // });
+
 
     // Listening for click on map
     map.on('click', (e) => {
@@ -147,7 +159,12 @@
             console.log(results);
             const city = results.split(',')[1]
             const state = results.split(',')[2].replace(/[0-9]/g, '');
-            console.log(city, state);
+            console.log(city, state, lat, lng);
+            const locationHTML = `
+            <p>${city}, ${state}</p>
+            `
+            $('h1').html(locationHTML)
+
         });
     }
 
@@ -168,6 +185,7 @@
 
     // initial weather call
     fetchWeather(29.423017, -98.48527, 'imperial', OPENWEATHER_KEY)
+    reverseGeoAddress(29.429692409780586, -98.49915310058556, MAPBOX_KEY)
 
 
 })()
