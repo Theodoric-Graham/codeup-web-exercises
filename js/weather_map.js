@@ -133,22 +133,11 @@
         $('.cards-normal').html(cardMarkup)
     }
 
-    const successCallback = (position) => {
-        console.log(position);
-    };
-
-    const errorCallback = (error) => {
-        console.log(error);
-    };
-
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
-
     //creating the map
     const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
-        center: [-98.4916, 29.4252], // starting position [lng, lat]
+        center: [-118.2428, 34.0537], // starting position [lng, lat]
         zoom: 10, // starting zoom
     });
 
@@ -189,7 +178,6 @@
         geocodeAddressMarker(inputAddress, MAPBOX_KEY)
         // clear input field
         $('#address-input').val('')
-
     })
 
     //Might be a better way to get city and state
@@ -233,11 +221,30 @@
 
     })
 
+    // geolocation success function, get coords then fetch weather and render cards, and reverse geo for the address
+    const successCallback = (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        fetchWeather(lat, lng, 'imperial', OPENWEATHER_KEY)
+        reverseGeoAddress(lat, lng, MAPBOX_KEY)
+        marker = new mapboxgl.Marker()
+            .setLngLat([lng, lat])
+            .addTo(map);
+        map.setCenter([lng, lat]);
+        map.setZoom(10);
+    };
+
+    const errorCallback = (error) => {
+        console.log(error);
+    };
+
+    //Geolocation API, getCurrentPosition takes a success and failure callback
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
     // initial weather call
-    fetchWeather(29.423017, -98.48527, 'imperial', OPENWEATHER_KEY)
+    fetchWeather(34.0537, -118.2428, 'imperial', OPENWEATHER_KEY)
     // intial address call based on coords
-    // TODO: implement geolocation API to get coords based on location data
-    reverseGeoAddress(29.429692409780586, -98.49915310058556, MAPBOX_KEY)
+    reverseGeoAddress(34.0537, -118.2428, MAPBOX_KEY)
 
 
 })()
