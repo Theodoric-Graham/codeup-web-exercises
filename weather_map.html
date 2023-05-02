@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather Map</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet'/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -10,99 +12,120 @@
 </head>
 <body>
 <header>
-    <h1></h1>
-    <div class="input-group mb-3 container justify-content-center ">
-        <form class="d-flex">
+    <!--  Boiler Plate Bootstrap  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2  ">
+        <div class="container-fluid">
+            <a class="navbar-brand" target="_blank" href="https://codeup.com/">
+                <img class="codeup-logo" src="images/codeup-logo.webp" alt="codeup logo-home" width="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="https://openweathermap.org/api"
+                           target="_blank">OpenWeatherMap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a target="_blank" class="nav-link" href="https://www.mapbox.com/">Mapbox</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Favorites
+                        </a>
+                        <!--                        TODO implement local storage and adding favorites-->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Austin</a></li>
+                            <li><a class="dropdown-item" href="#">Houston</a></li>
+                            <li><a class="dropdown-item" href="#">Dallas</a></li>
+                            <li><a class="dropdown-item" href="#">Corpus Christi</a></li>
+                        </ul>
+                    </li>
 
-            <input id="address-input" type="text" class="form-control" placeholder="Enter Address"
-                   aria-label="enter address"
-                   aria-describedby="button-addon2">
-            <input class="btn btn-light btn-outline-dark" type="submit" id="input-btn" value="Submit">
-        </form>
+                </ul>
 
-    </div>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           id="address-input">
+                    <button class="btn btn-outline-secondary" type="submit" id="input-btn">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 </header>
-<div class="city-state">
+<div class="container">
 
-</div>
+    <div class="city-state"></div>
 
-<!--<form class="d-flex">-->
-<!--    <label for="address-input">Enter Address:</label><br>-->
-<!--    <input type="text" id="address-input"><br><br>-->
-<!--    <input id="input-btn" type="submit" value="Submit">-->
-<!--</form>-->
-<div id="carouselExampleIndicators" class="carousel slide carousel-dark container" data-interval="false">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                aria-label="Slide 5"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
-                aria-label="Slide 6"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
-                aria-label="Slide 7"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
-                aria-label="Slide 8"></button>
+
+    <!--Carousel Component-->
+    <div id="carouselExampleIndicators" class="d-md-none carousel slide carousel-dark container card-box-shadow"
+         data-interval="false">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                    aria-label="Slide 5"></button>
+            <!--        Preventing the extra buttons, uncomment to show 8 day forecast-->
+            <!--        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"-->
+            <!--                aria-label="Slide 6"></button>-->
+            <!--        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"-->
+            <!--                aria-label="Slide 7"></button>-->
+            <!--        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"-->
+            <!--                aria-label="Slide 8"></button>-->
+        </div>
+        <div id="carousel" class="carousel-inner">
+            <!--DYNAMIC CAROUSEL HTML-->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <div id="carousel" class="carousel-inner">
-        <!--DYNAMIC HTML-->
+
+    <div class="justify-content-between cards-normal d-none d-md-flex card-box-shadow">
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+
+
+
+    <!--MAPBOX HTML-->
+    <div class="m-auto mb-4" id='map' style='width: calc(100% - 24px);
+  height: 35em;'></div>
 </div>
-
-<!--MAPBOX HTML-->
-
-
-<!--zoom selector-->
-<!--<label for="zoom">Zoom Level</label>-->
-<!--<select name="zoom" id="zoom">-->
-<!--    <option value="5">5</option>-->
-<!--    <option selected value="10">10</option>-->
-<!--    <option value="15">15</option>-->
-<!--    <option value="20">20</option>-->
-<!--</select>-->
-
-<!--toggle markers-->
-<!--<button class="btn btn-primary btn-hide">Toggle Markers</button>-->
-
-
-<div class="container" id='map' style='    width: 696px;
-  height:40vh;'></div>
 
 <footer>
-    <div class="logo-container d-flex justify-content-center">
-        <span>Powered by</span>
+    <div class="logo-container d-flex justify-content-center gap-3">
         <img
                 src="images/openweatherlogo.png"
                 alt="open weather map logo"
                 class="logo-open-weather"
         />
-        <span>     &     </span>
         <img src="images/mapbox-logo-black.svg"
              class="logo-map-box"
         >
     </div>
 </footer>
 
-<script src="js/mapbox-geocoder-utils.js"></script>
-<script src="bootstrap/js/bootstrap.js"></script>
-<script src="js/keys.js"></script>
 <script src="js/jquery-3.6.4.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="bootstrap/js/bootstrap.bundle.js"></script>
+<script src="js/keys.js"></script>
 <script src="js/weather_map.js"></script>
 
 </body>

@@ -1,3 +1,4 @@
+/*General Styling*/
 * {
     margin: 0;
     padding: 0;
@@ -5,97 +6,142 @@
 }
 
 body {
-    position: relative;
-    min-height: 100vh;
     background-color: #D9EAFC;
+    /*code to stick footer to bottom*/
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /********************************/
 }
 
-.tabs {
-    color: #f8f8f8;
+/*Styling for Header*/
+.codeup-logo {
+    width: 90px;
 }
 
-.mapboxgl-popup {
-    max-width: 360px !important;
+.city-state {
+    font-size: 24px;
+    color: #061F37;
+    text-align: center;
 }
 
-.hidden {
-    /*font-size: 24px;*/
-
-    visibility: hidden;
+.bg-light {
+    background-color: #1177E4 !important;
 }
 
-.carousel-item {
-    height: 600px;
+.nav-link {
+    color: #DAEBFB !important;
 }
 
-.card-body {
-    height: 500px;
+.btn-outline-secondary {
+    color: white;
+    border-color: white;
 }
+
+.navbar-toggler {
+    background-color: white;
+}
+
+/*Card Styling*/
 
 .card-header {
     font-size: 24px;
 }
 
-img {
-    width: 100px;
-}
-
-h1 {
-    padding: 10px;
-    text-align: center;
-}
-
-#map {
-  margin-top: 3rem;
+.carousel {
+    margin-bottom: 1rem;
 }
 
 
-header {
-    background-color: #1177E4;
-    color: #ECF5FD;
-    height: 20%;
-    padding: 2px;
-    margin-bottom: 4rem;
-}
-
-footer {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    color: #ECF5FD;
-    padding: 2em;
-    margin-top: 3rem;
-    background-color: #1177E4;
-}
-
-.logo-open-weather {
-    width: 200px;
-    margin: 0em 1em;
-}
-
-.logo-map-box {
-    width: 120px;
-    margin: 0em 1em;
-
-}
-
-.city-state {
-    font-size: 48px;
-    display: flex;
-    color: #062037;
-    justify-content: center;
+/*Dirty solution to make carousel tabs correct height*/
+.tabs {
+    color: #f8f8f8;
 }
 
 .card-text {
-    font-size: 24px;
-}
-
-.card-weather-desc {
-    visibility: hidden;
-    font-size: 24px;
+    font-size: 16px;
 }
 
 .card-title {
-    font-size: 42px;
+    font-size: 28px;
 }
 
+.card-box-shadow {
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.039);
+}
+
+/*Footer Styling*/
+
+.logo-open-weather {
+    width: 150px;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.logo-map-box {
+    width: 100px;
+    margin-left: 1em;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: #ECF5FD;
+    background-color: #1177E4;
+    padding: 2px;
+    height: 45px;
+
+    /*Code to Stick footer on botton*/
+    margin-top: auto;
+}
+
+/*******************/
+/*Media Queries*/
+/*display only for screen sizes below 768px*/
+
+@media (max-width: 768px) {
+  .logo-map-box {
+      margin-left: 0;
+      margin-right: 0;
+  }
+  .logo-open-weather {
+      margin-left: 0;
+      margin-right: 0;
+    }
+}
+
+/*display only for screen sizes 768 and up*/
+@media (min-width: 768px) {
+    .card {
+        width: 100%;
+    }
+
+    .cards-normal {
+        gap: 2px;
+        height: 50%;
+    }
+
+    .card-body {
+        margin: auto;
+        height: 350px;
+    }
+
+    .card-title {
+        font-size: 24px;
+    }
+
+    .card-header {
+        font-size: 18px;
+    }
+
+    .card-text {
+        font-size: 14px;
+    }
+
+    #map {
+        width: 100% !important;
+        margin-top: 2em !important;
+    }
+}
