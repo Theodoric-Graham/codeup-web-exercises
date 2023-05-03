@@ -34,6 +34,7 @@
                 // console.log(dt)
                 //converting dt into a date object
                 const date = new Date(dt * 1000);
+                console.log(date)
                 const currentDate = date.getDate()
                 const currentMonth = month[date.getMonth()]
                 const currentDay = weekday[date.getDay()];
@@ -61,7 +62,7 @@
                 <p class="card-text">High: ${highTemp} &#8457;</p>
                 <p class="card-text">Low: ${lowTemp} &#8457;</p>
                 <p class="card-text">Humidity: ${day.humidity}</p>
-                <p class="card-text">Wind: ${day.wind_speed} mph</p>
+                <p class="card-text">Wind: ${day.wind_speed}</p>
               </div>
               <div class="card-footer text-muted">
                 <p class="tabs">tabs</p>
@@ -100,12 +101,10 @@
                 const currentTemp = day.temp.day
                 const highTemp = day.temp.max
                 const lowTemp = day.temp.min
-                const nightTemp = day.temp.night
 
                 //getting weather icon
                 const weatherIcon = `https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`
                 const weather = day.weather[0].main
-                const weatherDesc = day.weather[0].description
 
                 //creating dynamic html
                 cardMarkup += `
@@ -120,7 +119,7 @@
                     <p class="card-text">High: ${highTemp} &#8457;</p>
                     <p class="card-text">Low: ${lowTemp} &#8457;</p>
                     <p class="card-text">Humidity: ${day.humidity}</p>
-                    <p class="card-text">Wind: ${day.wind_speed} mph</p>
+                    <p class="card-text">Wind: ${day.wind_speed}</p>
                 </div>
               <div class="card-footer text-muted">
                 <p class="tabs">tabs</p>
