@@ -34,7 +34,7 @@
                 // console.log(dt)
                 //converting dt into a date object
                 const date = new Date(dt * 1000);
-                console.log(date)
+                // console.log(date)
                 const currentDate = date.getDate()
                 const currentMonth = month[date.getMonth()]
                 const currentDay = weekday[date.getDay()];
@@ -77,7 +77,7 @@
 
     // creates the markup for cards outside of carousel
     const getForecastCards = (data) => {
-        console.log(data)
+        // console.log(data)
         //used to dynamically set days
         const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const month = ["January", "February", "March", "April", "May", "June", "July",
@@ -93,6 +93,7 @@
                 const dt = day.dt
                 //converting dt into a date object
                 const date = new Date(dt * 1000);
+                console.log(date)
                 const currentDate = date.getDate()
                 const currentMonth = month[date.getMonth()]
                 const currentDay = weekday[date.getDay()];
@@ -184,7 +185,7 @@
     const reverseGeoAddress = (lat, lng, token) => {
         reverseGeocode({lng: lng, lat: lat}, token).then(function (results) {
             // logs the address
-            console.log(results);
+            // console.log(results.split(','));
             //splits the string to get just the city and state
             const city = results.split(',')[1]
             const state = results.split(',')[2].replace(/[0-9]/g, '');
