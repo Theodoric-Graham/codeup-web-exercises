@@ -72,7 +72,7 @@
         console.log(user.languages)
         user.languages.forEach(el => {
             if (!acc.includes(el)) {
-                acc += `${el} ,`
+                acc += `${el}, `
             }
         })
         return acc
