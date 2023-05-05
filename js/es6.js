@@ -33,7 +33,7 @@ const users = [
 // to the languages array
 // TODO: replace the `var` keyword with `const`, then try to reassign a variable
 // declared as `const`
-const name = 'Theodoric Graham';
+const name = 'theodoric';
 // name = 'John Doe' // assignment to constant variable
 const email = 'theodoricgraham@hotmail.com';
 const languages = ['html', 'css', 'javascript', 'node.js', 'react'];
@@ -86,17 +86,19 @@ console.log(developers)
 let list = '<ul>';
 
 // TODO: rewrite the following loop to use a for..of loop
+developers.forEach(function (developer) {
+
+});
+
 for (let developer of developers) {
 
     // TODO: rewrite the assignment below to use template strings
     // list += '<li>' + developer + '</li>';
     list += `<li>${developer}</li>`;
-}
-;
+    console.log(list)
+};
 list += '</ul>';
 
-$.get('https://dog.ceo/api/breeds/image/random').done(data =>
-    $('.put-here').html(`<img src="${data.message}">`)
-)
 
+$('.put-here').html(list)
 
